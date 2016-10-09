@@ -1,0 +1,86 @@
+﻿@import url(http://fonts.googleapis.com/css?family=Anonymous+Pro);
+
+body {
+    height: 100%;
+    padding-top: 0;
+    background: #1b1b1b;
+    font-family: 'Anonymous Pro', monospace;
+}
+
+footer {
+    float: right;
+    bottom: 0;
+    color: #2a9fd6;
+}
+
+.body-content {
+    padding-left: 15px;
+    padding-right: 15px;
+}
+
+input, select, textarea {
+    max-width: 280px;
+}
+
+.field-validation-error {
+    color: #b94a48;
+}
+
+.field-validation-valid {
+    display: none;
+}
+
+input.input-validation-error {
+    border: 1px solid #b94a48;
+}
+
+input[type="checkbox"].input-validation-error {
+    border: 0 none;
+}
+
+.validation-summary-errors {
+    color: #b94a48;
+}
+
+.validation-summary-valid {
+    display: none;
+}
+
+.navbar-nav > li > a {
+    background: #1b1b1b;
+    border: #2a9fd6 solid 1px;
+    display: inline-block;
+    width: 100%;
+    color: white;
+}
+
+.navbar-nav > li > a:hover {
+    color: #2a9fd6;
+}
+
+.navbar-nav > .active > a,
+.navbar-nav > .active > a:hover,
+.navbar-nav > .active > a:focus {
+    color: #1b1b1b;
+    background: #2a9fd6;
+}
+
+#top, #bottom, #left, #right {
+	background: #2a9fd6;
+	position: fixed;
+}
+
+#left, #right {
+    top: 0; bottom: 0;
+    width: 1px;
+}
+
+#top, #bottom {
+    left: 0; right: 0;
+	height: 1px;
+}
+
+#left { left: 0; }
+#right { right: 0; }
+#top { top: 0; }
+#bottom { bottom: 0; }

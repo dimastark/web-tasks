@@ -1,7 +1,4 @@
-"""
-Definition of urls for project.
-"""
-
+""" Definition of urls for project. """
 from datetime import datetime
 
 from django.conf.urls import url, include

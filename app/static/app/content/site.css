@@ -1,16 +1,11 @@
 ﻿@import url(http://fonts.googleapis.com/css?family=Anonymous+Pro);
 
+html { height: 100%; }
 body {
     height: 100%;
     padding-top: 0;
     background: #1b1b1b;
     font-family: 'Anonymous Pro', monospace;
-}
-
-footer {
-    float: right;
-    bottom: 0;
-    color: #2a9fd6;
 }
 
 .body-content {
@@ -48,39 +43,72 @@ input[type="checkbox"].input-validation-error {
 
 .navbar-nav > li > a {
     background: #1b1b1b;
-    border: #2a9fd6 solid 1px;
+    border: #2cc3fd solid 2px;
     display: inline-block;
     width: 100%;
     color: white;
 }
 
 .navbar-nav > li > a:hover {
-    color: #2a9fd6;
+    color: #2cc3fd;
 }
 
 .navbar-nav > .active > a,
 .navbar-nav > .active > a:hover,
 .navbar-nav > .active > a:focus {
     color: #1b1b1b;
-    background: #2a9fd6;
+    background: #2cc3fd;
 }
 
 #top, #bottom, #left, #right {
-	background: #2a9fd6;
+	background: #2cc3fd;
 	position: fixed;
 }
 
 #left, #right {
     top: 0; bottom: 0;
-    width: 1px;
+    width: 2px;
 }
 
 #top, #bottom {
     left: 0; right: 0;
-	height: 1px;
+	height: 2px;
 }
 
 #left { left: 0; }
 #right { right: 0; }
 #top { top: 0; }
 #bottom { bottom: 0; }
+
+.wrapper {
+	min-height: 100%;
+	margin: 0 auto -30px;
+}
+
+.footer, .push {
+    padding-right: 10px;
+    float: right;
+	height: 20px;
+    color: #2cc3fd;
+}
+
+.togg {
+    padding-left: 20px;
+    float: left;
+    color: #2cc3fd;
+    text-align: center;
+    border: #2cc3fd solid 1px;
+}
+
+.typewriter {
+    padding-left: 15px;
+}
+
+.tile {
+    margin:10px;
+    padding:10px;
+}
+
+.bord {
+    border: #2cc3fd solid 1px;
+}

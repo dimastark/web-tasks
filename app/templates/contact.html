@@ -2,18 +2,22 @@
 
 {% block content %}
 
-<h2>{{ title }}.</h2>
-<h3>{{ message }}</h3>
-
-<address>
-    Екатеринбург<br />
-    <abbr title="Номер телефона">Т:</abbr>8-922-170-10-52
-</address>
-
-<address>
-    <strong>Google:</strong>   <a href="mailto:dstarkdev@gmail.com">dstarkdev@gmail.com</a><br />
-    <strong>Яндекс:</strong>   <a href="mailto:Dima.Stark97@yandex.ru">Dima.Stark97@yandex.ru</a><br />
-    <strong>Моя любимая:</strong> <a href="mailto:fun@li.ru">fun@li.ru</a>
-</address>
+    <div class="col-md-8 bord">
+            <div class="bord tile row-md-2">
+            <strong>Google:</strong><a href="mailto:dstarkdev@gmail.com">dstarkdev@gmail.com</a><br/>
+            </div>
+            <div class="bord tile row-md-2">
+            <strong>Яндекс:</strong><a href="mailto:Dima.Stark97@yandex.ru">Dima.Stark97@yandex.ru</a><br/>
+            </div>
+            <div class="bord tile row-md-12">
+            <strong>LiveInternet:</strong><a href="mailto:fun@li.ru">fun@li.ru</a><br/>
+            </div>
+            <div class="bord tile row-md-4">
+            <strong>Моя:</strong> <a href="mailto:i@dimastark.com">i@dimastark.com</a>
+            </div>
+    </div>
+    <div class="col-sm-4">
+       <div class="bord">{% include "contact_form.html" %}</div>
+    </div>
 
 {% endblock %}

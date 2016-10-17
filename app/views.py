@@ -2,7 +2,6 @@
 
 from django.shortcuts import render
 from django.http import HttpRequest
-from django.template import RequestContext
 from datetime import datetime
 
 
@@ -24,18 +23,6 @@ def contact(request):
             'name': 'contact',
             'title': 'Где я? Как я?',
             'message': 'Как меня найти?',
-            'year': datetime.now().year,
-        }
-    )
-
-
-def about(request):
-    """Renders the about page."""
-    assert isinstance(request, HttpRequest)
-    return render(request, 'about.html', {
-            'name': 'about',
-            'title': 'ЧаВО',
-            'message': 'Че это?',
             'year': datetime.now().year,
         }
     )

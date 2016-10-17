@@ -6,7 +6,7 @@ from django.contrib import admin
 from django.contrib.auth.views import login, logout
 
 from app.forms import BootstrapAuthenticationForm
-from app.views import home, comments, contact, images, about
+from app.views import home, comments, contact, images
 
 admin.autodiscover()
 urlpatterns = [
@@ -14,7 +14,6 @@ urlpatterns = [
     url(r'^contact$', contact, name='contact'),
     url(r'^comments$', comments, name='comments'),
     url(r'^images$', images, name='images'),
-    url(r'^about', about, name='about'),
     url(r'^login/$', login, {
         'template_name': 'login.html',
         'authentication_form': BootstrapAuthenticationForm,

@@ -1,23 +1,58 @@
 {% extends "layout.html" %}
+{% load staticfiles %}
 
 {% block content %}
 
-    <div class="col-md-8 bord">
-            <div class="bord tile row-md-2">
-            <strong>Google:</strong><a href="mailto:dstarkdev@gmail.com">dstarkdev@gmail.com</a><br/>
+    <div class="row">
+        <div class="col-md-7 bord tile">
+            <div class="bord tile row">
+                <div class="col-md-6">
+                    <div class="bord tile row">
+                        <strong>Google:</strong>
+                        <a class="mail" href="mailto:dstarkdev@gmail.com">dstarkdev@gmail.com</a>
+                    </div>
+                    <div class="bord tile row">
+                        <strong>Яндекс:</strong>
+                        <a class="mail" href="mailto:Dima.Stark97@yandex.ru">Dima.Stark97@yandex.ru</a><br/>
+                    </div>
+                </div>
+                <div class="col-md-6">
+                    <div class="bord tile row">
+                        <strong>LiveInternet:</strong>
+                        <a class="mail" href="mailto:fun@li.ru">fun@li.ru</a><br/>
+                    </div>
+                    <div class="bord tile row">
+                        <strong>Моя:</strong>
+                        <a class="mail" href="mailto:i@dimastark.com">i@dimastark.com</a>
+                    </div>
+                </div>
             </div>
-            <div class="bord tile row-md-2">
-            <strong>Яндекс:</strong><a href="mailto:Dima.Stark97@yandex.ru">Dima.Stark97@yandex.ru</a><br/>
+            <div class="bord tile row">
+                <div class="col-md-6 col-xs-6">
+                    <p class="img-par">
+                        Вконтакте
+                        <a href="https://vk.com/dimastarkoff">
+                            <img class="img-responsive img-link"
+                                 src="{% static 'app/images/vk.png' %}"
+                                 alt="vk"
+                            />
+                        </a>
+                    </p>
+                </div>
+                <div class="col-md-6 col-xs-6">
+                    <p class="img-par">
+                        GitHub
+                        <a href="https://github.com/dimastark">
+                            <img class="img-responsive img-link"
+                                 src="{% static 'app/images/github.png' %}"
+                                 alt="github"
+                            />
+                        </a>
+                    </p>
+                </div>
             </div>
-            <div class="bord tile row-md-12">
-            <strong>LiveInternet:</strong><a href="mailto:fun@li.ru">fun@li.ru</a><br/>
-            </div>
-            <div class="bord tile row-md-4">
-            <strong>Моя:</strong> <a href="mailto:i@dimastark.com">i@dimastark.com</a>
-            </div>
-    </div>
-    <div class="col-sm-4">
-       <div class="bord">{% include "contact_form.html" %}</div>
+        </div>
+        <div class="col-md-4 bord tile">{% include "contact_form.html" %}</div>
     </div>
 
 {% endblock %}

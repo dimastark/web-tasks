@@ -1,34 +1,40 @@
 {% extends "layout.html" %}
+{% load staticfiles %}
 
 {% block content %}
-
-    <div class="row">
-        <div class="col-md-12 typewriter">
-            <p id="typer"></p>
+    <section class="intro bord tile">
+        <div class="col-md-12 typewriter welcome">
+            <p class="welcome-text" id="typer"></p>
         </div>
-    </div>
-
-    <div class="row">
-        <div class="col-md-3">
-            <h2>Тут тоже</h2>
-            <p>Совсем пусто</p>
+        <div class="col-md-12 alt welcome">
+            <p class="welcome-text">Добро пожаловать на мой скромый сайт.</p>
         </div>
-        <div class="col-md-3">
-            <h2>Я не вру</h2>
+    </section>
+    <section class="intro bord tile">
+        <div class="col-md-6 sect-text">
             <p>
-                Совсем-совсем пусто
+                Меня зовут Дима Старков
+                и я почти "full-stack" разработчик &#128516;
             </p>
         </div>
-        <div class="col-md-3">
-            <h2>Тут тоже</h2>
-            <p>Совсем пусто</p>
-        </div>
-        <div class="col-md-3">
-            <h2>Я не вру</h2>
+    </section>
+    <section class="intro bord tile">
+        <div class="col-md-offset-6 col-md-6 sect-text">
             <p>
-                Совсем-совсем пусто
+                Так же я студент матмеха
             </p>
         </div>
-    </div>
+    </section>
+    <section class="intro bord tile">
+        <div class="col-md-6 sect-text">
+            <p>
+                Что я могу?
+            </p>
+        </div>
+        <div class="col-md-6">
+            {% include 'skills.html' %}
+        </div>
+    </section>
+
 
 {% endblock %}

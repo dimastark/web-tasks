@@ -1,0 +1,83 @@
+<!DOCTYPE html>
+<html>
+<head>
+	<title>Сортировочка табличечки</title>
+	<meta charset="utf-8">
+	<style type="text/css">
+		table.buttons { width: 100%; }
+		table.buttons tr td { width: 25%; }
+		table.buttons tr td button { width: 100%; }
+		h1 { text-align: center; padding: 0; }
+		td { text-align: center;l }
+	</style>
+	<script type="text/javascript">
+		function generateText() {
+			var text = "";
+			var possible = "abcdefghijklmnopqrstuvwxyz";
+			for (var i = 0; i < 5; i++) {
+				charN = Math.floor(Math.random() * 10);
+				text += possible.charAt(charN);
+			}
+			return text;
+		}
+		function generateNumber() {
+			return Math.floor(Math.random() * 100);
+		}
+
+		function generateTable() {
+			var body = document.getElementsByTagName("body")[0];
+			var tbl = document.createElement("table");
+			tbl.setAttribute("id", "generated");
+			tbl.style.width = "100%";
+			tbl.setAttribute("border", "1");
+			var tbdy = document.createElement("tbody");
+			for (var i = 0; i < 4; i++) {
+				var tr = document.createElement("tr");
+				for (var j = 0; j < 4; j++) {
+					var td = document.createElement("td");
+					td.style.width = "25%";
+					if (j === 0) {
+						td.appendChild(document.createTextNode(generateText()))
+					} else {
+						td.appendChild(document.createTextNode(generateNumber()))
+					}
+					tr.appendChild(td)
+				}
+				tbdy.appendChild(tr);
+			}
+			tbl.appendChild(tbdy);
+			body.appendChild(tbl)
+		}
+
+		function sortDataBy(column, str) {
+	        var tableData = document.getElementById('generated').getElementsByTagName('tbody').item(0);
+	        var rowData = tableData.getElementsByTagName('tr');
+
+	        for(var i = 0; i < rowData.length - 1; i++) {
+	            for(var j = 0; j < rowData.length - (i + 1); j++) {
+	            	var first = rowData.item(j).getElementsByTagName('td').item(column).innerHTML;
+	            	var second = rowData.item(j+1).getElementsByTagName('td').item(column).innerHTML;
+	            	if (!str) {
+	            		first = parseInt(first);
+	            		second = parseInt(second);
+	            	}
+	                if(first > second) {
+	                    tableData.insertBefore(rowData.item(j+1),rowData.item(j));
+	                }
+	            }
+	        }
+	    }
+	</script>
+</head>
+<body onload="generateTable()">
+<h1>Сортировка по столбцам</h1>
+<table class="buttons">
+<tr>
+<td><button onclick="sortDataBy(0, true)">1</button></td>
+<td><button onclick="sortDataBy(1)">2</button></td>
+<td><button onclick="sortDataBy(2)">3</button></td>
+<td><button onclick="sortDataBy(3)">4</button></td>
+</tr>
+</table>
+</body>
+</html>

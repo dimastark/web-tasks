@@ -1,0 +1,110 @@
+div.dropdown * {
+    color: red;
+}
+
+body {
+	margin: 0px;
+	padding: 50px;
+	font-size: 13px;
+	line-height: 1.5em; 
+	background-color: #000;
+}
+
+p { margin: 0px; padding: 0; }
+
+.cleaner { clear: both; height: 0px; font-size: 0px; }
+
+a.to { color: #00F; font-weight: bold; text-decoration: none; }
+
+#wrap {
+	width: 1000px;
+	padding: 0 10px;
+	margin: 0 auto;
+}
+
+#menu {
+	clear: both;
+	width: 1000px;
+	height: 35px;
+}
+
+#menu ul {
+	float: left;
+	display: block;
+	width: 700px;
+	height: 35px;
+	margin: 0;
+	padding: 0;
+	list-style: none;
+}
+
+#menu ul li {
+	padding: 0;
+	margin: 0;
+	display: inline-block;
+}
+
+#menu ul li a {
+	position: relative;
+	float: left;
+	display: block;
+	height: 21px;
+	padding: 7px 28px;
+	font-size: 15px;
+	color: #fff;	
+	text-decoration: none;
+	font-weight: normal;
+	text-align: center;
+	outline: none;
+}
+
+#menu ul li a:hover, #menu ul .current {
+	color: #000;
+	background: #fff;
+}
+
+#main {
+	width: 920px;
+	padding: 40px;
+	background: #fff;
+}
+
+.post { clear: both; margin-bottom: 40px; }
+.post h2 a { text-decoration: none; }
+
+#copyright {
+	width: 920px;
+	padding: 15px 40px;
+	margin: 0 auto;
+	color: #fff;
+	text-align: center;
+}
+
+.comments p {
+    width: 300px;
+    border: 5px solid grey;
+    padding: 25px;
+    margin: 25px;
+}
+
+div.img {
+    margin: 5px;
+    border: 1px solid #ccc;
+    float: left;
+    width: 180px;
+}
+
+div.img:hover {
+    border: 1px solid #777;
+}
+
+div.img img {
+    width: 100%;
+    height: auto;
+}
+
+div.desc {
+    padding: 15px;
+    text-align: center;
+}
+

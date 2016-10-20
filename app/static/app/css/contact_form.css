@@ -1,0 +1,17 @@
+.break { clear: both }
+
+.head { text-align: center }
+
+.form-area button { width: 100% }
+
+.js { display: none }
+
+.form-group input, textarea {
+	margin: auto;
+	width: 100%;
+}
+
+.form-area {
+	padding: 10px 40px 10px;
+	margin: 10px 0 39px;
+}

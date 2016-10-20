@@ -2,73 +2,62 @@
 <html>
 <head>
     <meta charset="utf-8" />
-    {# Set width depends on screen size #}
     <meta name="viewport" content="width=device-width, initial-scale=1.0">
     <title>{{ title }}</title>
-    {# Static #}
     {% load staticfiles %}
     <link rel="shortcut icon" href="{% static 'app/images/favicon.ico' %}" />
-    <link rel="stylesheet" type="text/css" href="{%  static 'app/content/bootstrapt.min.css' %}" />
-    <link rel="stylesheet" type="text/css" href="{% static 'app/content/site.css' %}" />
-    <link rel="stylesheet" type="text/css" href="{% static 'app/content/effects.css' %}" />
-    <link rel="stylesheet" type="text/css" href="{% static 'app/content/contact_form.css' %}" />
-    <link rel="stylesheet" type="text/css" href="{% static 'app/content/social-likes_flat.css' %}" />
-
-    {# For checking features #}
-    {# <script src="{% static 'app/scripts/modernizr-2.6.2.js' %}"></script> #}
+    <link rel="stylesheet" type="text/css" href="{% static 'app/external_css/social-likes_flat.css' %}" />
+    <link rel="stylesheet" type="text/css" href="{% static 'app/external_css/bootstrapt.min.css' %}" />
+    <link rel="stylesheet" type="text/css" href="{% static 'app/css/contact_form.css' %}" />
+    <link rel="stylesheet" type="text/css" href="{% static 'app/css/validation.css' %}" />
+    <link rel="stylesheet" type="text/css" href="{% static 'app/css/progress.css' %}" />
+    <link rel="stylesheet" type="text/css" href="{% static 'app/css/effects.css' %}" />
+    <link rel="stylesheet" type="text/css" href="{% static 'app/css/navibar.css' %}" />
+    <link rel="stylesheet" type="text/css" href="{% static 'app/css/site.css' %}" />
 </head>
-
 <body>
-
     <div class="wrapper">
-
-    <!-- Borders -->
-    <div id="left"></div>
-    <div id="right"></div>
-    <div id="top"></div>
-    <div id="bottom"></div>
-        <!-- Navbar -->
+        <div id="left"></div>
+        <div id="right"></div>
+        <div id="top"></div>
+        <div id="bottom"></div>
         <div class="navbar navbar-static-top">
-        <div class="container">
-            <div class="navbar-header">
-                <button class="navbar-toggle togg" data-toggle="collapse" data-target=".navbar-collapse">МЕНЮ</button>
-            </div>
-            <div class="navbar-collapse collapse">
-                <ul class="nav navbar-nav">
-                    <li role="presentation" {% if name == 'home' %}class="active"{% endif %}><a href="{% url 'home' %}">Главная</a></li>
-                    <li role="presentation" {% if name == 'images' %}class="active"{% endif %}><a href="{% url 'images' %}">Картиночки</a></li>
-                    <li role="presentation" {% if name == 'comments' %}class="active"{% endif %}><a href="{% url 'comments' %}">Отзывы</a></li>
-                    <li role="presentation" {% if name == 'contact' %}class="active"{% endif %}><a href="{% url 'contact' %}">Контакты</a></li>
-                </ul>
-                {% include 'loginpartial.html' %}
+            <div class="container">
+                <div class="navbar-header">
+                    <button class="navbar-toggle togg" data-toggle="collapse" data-target=".navbar-collapse">МЕНЮ</button>
+                </div>
+                <div class="navbar-collapse collapse">
+                    <ul class="nav navbar-nav">
+                        <li role="presentation" {% if name == 'home' %}class="active"{% endif %}>
+                            <a href="{% url 'home' %}">Главная</a>
+                        </li>
+                        <li role="presentation" {% if name == 'images' %}class="active"{% endif %}>
+                            <a href="{% url 'images' %}">Картиночки</a>
+                        </li>
+                        <li role="presentation" {% if name == 'comments' %}class="active"{% endif %}>
+                            <a href="{% url 'comments' %}">Отзывы</a>
+                        </li>
+                        <li role="presentation" {% if name == 'contact' %}class="active"{% endif %}>
+                            <a href="{% url 'contact' %}">Контакты</a>
+                        </li>
+                    </ul>
+                    {% include 'loginpartial.html' %}
+                </div>
             </div>
         </div>
-    </div>
-
         <div class="container body-content">
             {% block content %}{% endblock %}
         </div>
         <div class="push"></div>
     </div>
-
     <div class="footer">
-        <div class="social-likes social-likes_light">
-            <div class="facebook" title="Поделиться ссылкой на Фейсбуке">Facebook</div>
-            <div class="twitter" title="Поделиться ссылкой в Твиттере">Twitter</div>
-            <div class="vkontakte" title="Поделиться ссылкой во Вконтакте">Вконтакте</div>
-            <div class="plusone" title="Поделиться ссылкой в Гугл-плюсе">Google+</div>
-            <p class="copyright">dimastark &copy; {{ year }}</p>
-        </div>
+        <div class="copyright">dimastark &copy; {{ year }}</div>
     </div>
-
-    <script src="{% static 'app/scripts/jquery-1.10.2.js' %}"></script>
-    <script src="{% static 'app/scripts/bootstrap.js' %}"></script>
-    <script src="{% static 'app/scripts/typeit.min.js' %}"></script>
-    <script src="{% static 'app/scripts/social-likes.min.js' %}"></script>
+    <script src="{% static 'app/external_scripts/jquery-1.10.2.js' %}"></script>
+    <script src="{% static 'app/external_scripts/bootstrap.js' %}"></script>
+    <script src="{% static 'app/external_scripts/typeit.min.js' %}"></script>
+    <script src="{% static 'app/external_scripts/social-likes.min.js' %}"></script>
     <script src="{% static 'app/scripts/site.js' %}"></script>
-    {# For compability bootstrap in old IE #}
-    <script src="{% static 'app/scripts/respond.js' %}"></script>
     {% block scripts %}{% endblock %}
-
 </body>
 </html>

@@ -8,7 +8,6 @@
         <section id="loginForm">
             <form action="" method="post" class="form-horizontal">
                 {% csrf_token %}
-                <h4>Входите</h4>
                 <hr />
                 <div class="form-group">
                     <label for="id_username" class="col-md-2 control-label">Логин</label>
@@ -38,13 +37,5 @@
         <section id="socialLoginForm"></section>
     </div>
 </div>
-
-{% endblock %}
-
-
-{% block scripts %}
-
-    {% load staticfiles %}
-<script src="{% static 'app/scripts/jquery.validate.min.js' %}"></script>
 
 {% endblock %}

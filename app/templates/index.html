@@ -1,40 +1,36 @@
 {% extends "layout.html" %}
-{% load staticfiles %}
 
 {% block content %}
-    <section class="intro bord tile">
+
+    <div class="section bord tile">
         <div class="col-md-12 typewriter welcome">
             <p class="welcome-text" id="typer"></p>
         </div>
         <div class="col-md-12 alt welcome">
             <p class="welcome-text">Добро пожаловать на мой скромый сайт.</p>
         </div>
-    </section>
-    <section class="intro bord tile">
-        <div class="col-md-6 sect-text">
-            <p>
+    </div>
+    <div class="section bord tile">
+        <div class="col-md-6">
+            <p class="sect-text">
                 Меня зовут Дима Старков
                 и я почти "full-stack" разработчик &#128516;
             </p>
         </div>
-    </section>
-    <section class="intro bord tile">
-        <div class="col-md-offset-6 col-md-6 sect-text">
-            <p>
-                Так же я студент матмеха
+    </div>
+    <div class="section bord tile">
+        <div class="col-md-offset-6 col-md-6">
+            <p class="sect-text">
+                Так же я студент <a href="https://vk.com/math_mech">МатМеха</a>
             </p>
         </div>
-    </section>
-    <section class="intro bord tile">
-        <div class="col-md-6 sect-text">
-            <p>
-                Что я могу?
-            </p>
-        </div>
-        <div class="col-md-6">
+    </div>
+    <div class="section bord tile">
+        <div class="col-xs-8 center-block">
+            <p class="sect-text">Что я могу?</p>
             {% include 'skills.html' %}
         </div>
-    </section>
+    </div>
 
 
 {% endblock %}

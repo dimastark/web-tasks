@@ -2,7 +2,7 @@
 from os import path
 
 CWD = path.dirname(path.abspath(path.dirname(__file__)))
-DEBUG = True
+DEBUG = False
 
 ALLOWED_HOSTS = ['localhost']
 ADMINS = [('dimastark', 'dstarkdev@gmail.com')]

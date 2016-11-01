@@ -2,9 +2,9 @@
 from os import path
 
 CWD = path.dirname(path.abspath(path.dirname(__file__)))
-DEBUG = False
+DEBUG = True
 
-ALLOWED_HOSTS = ['localhost', 'dimastark.com', '*']
+ALLOWED_HOSTS = ['localhost', 'dimastark.com']
 ADMINS = [('dimastark', 'dstarkdev@gmail.com')]
 MANAGERS = ADMINS
 

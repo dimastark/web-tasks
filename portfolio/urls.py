@@ -14,7 +14,7 @@ urlpatterns = [
     url(r'^contact$', contact, name='contact'),
     url(r'^comments$', comments, name='comments'),
     url(r'^images$', images, name='images'),
-    url(r'^login/$', include(login), {
+    url(r'^login/$', include('django.contrib.auth.urls'), {
         'template_name': 'login.html',
         'authentication_form': BootstrapAuthenticationForm,
         'extra_context': {
@@ -23,6 +23,6 @@ urlpatterns = [
             'year': datetime.now().year,
         },
     }, name='login'),
-    url(r'^logout/$', include(logout), {'next_page': '/'}, name='logout'),
+    url(r'^logout/$', logout, {'next_page': '/'}, name='logout'),
     url(r'^admin/', include(admin.site.urls)),
 ]

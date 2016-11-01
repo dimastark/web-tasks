@@ -147,4 +147,4 @@ LOGGING = {
 # Specify the default test runner.
 TEST_RUNNER = 'django.test.runner.DiscoverRunner'
 
-SITE_ID = 1
+SITE_ID = 4

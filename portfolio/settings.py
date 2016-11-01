@@ -2,7 +2,7 @@
 from os import path
 
 CWD = path.dirname(path.abspath(path.dirname(__file__)))
-DEBUG = True
+DEBUG = False
 
 ALLOWED_HOSTS = ['localhost']
 ADMINS = [('dimastark', 'dstarkdev@gmail.com')]
@@ -26,11 +26,11 @@ TEMPLATES = [
 
 DATABASES = {
     'default': {
-        'ENGINE': 'django.db.backends.sqlite3',
-        'NAME': path.join(CWD, 'db.sqlite3'),
-        'USER': '',
-        'PASSWORD': '',
-        'HOST': '',
+        'ENGINE': 'django.db.backends.postgresql_psycopg2',
+        'NAME': 'portfolio',
+        'USER': 'dima',
+        'PASSWORD': '260797',
+        'HOST': 'localhost',
         'PORT': '',
     }
 }

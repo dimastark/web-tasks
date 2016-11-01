@@ -14,7 +14,7 @@ urlpatterns = [
     url(r'^contact$', contact, name='contact'),
     url(r'^comments$', comments, name='comments'),
     url(r'^images$', images, name='images'),
-    url(r'^login/$', include('django.contrib.auth.urls'), {
+    url(r'^login/$', login, {
         'template_name': 'login.html',
         'authentication_form': BootstrapAuthenticationForm,
         'extra_context': {

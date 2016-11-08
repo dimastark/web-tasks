@@ -44,7 +44,7 @@ def comments(request):
 def images(request):
     """Renders the images page."""
     assert isinstance(request, HttpRequest)
-    return render(request, 'notfound.html', {
+    return render(request, 'gallery.html', {
             'name': 'images',
             'title': 'Картиночки',
             'message': '404',

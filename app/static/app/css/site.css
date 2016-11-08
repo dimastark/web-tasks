@@ -62,8 +62,8 @@ html, body {
 .section {
     display: flex;
     align-items: center;
+    margin-left: 0;
     width: 100%;
-    max-width: none;
     height: 100vh;
 }
 
@@ -86,3 +86,7 @@ html, body {
 .copyright { text-align: center }
 
 .typewriter { text-align: center }
+
+.thumb {
+    margin-bottom: 30px;
+}

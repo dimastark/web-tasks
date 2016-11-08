@@ -68,7 +68,7 @@ html, body {
 }
 
 .welcome {
-    display: table;
+    text-align: center;
     margin: 0 auto;
 }
 

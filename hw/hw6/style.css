@@ -1,0 +1,15 @@
+main {
+  width: 50vw;
+}
+
+.slide {
+  height: 100%;
+}
+
+.slidesjs-pagination {
+  display: none;
+}
+
+.slidesjs-next {
+  float: right;
+}

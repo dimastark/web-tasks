@@ -100,7 +100,7 @@ html, body {
     margin-right: 0;
 }
 
-@media (max-width: 992px) {
+@media (min-width: 992px) {
     .column {
         min-height: 520px;
     }

@@ -17,7 +17,7 @@ html, body {
 }
 
 .footer, .push {
-	height: 20px;
+	height: 30px;
     color: #2cc3fd;
 }
 
@@ -89,4 +89,23 @@ html, body {
 
 .thumb {
     margin-bottom: 30px;
+}
+
+.my-photo {
+    height: 90vh;
+}
+
+.mail-div {
+    margin-left: 0;
+    margin-right: 0;
+}
+
+@media (max-width: 992px) {
+    .column {
+        min-height: 520px;
+    }
+
+    .my-div {
+        display: none;
+    }
 }

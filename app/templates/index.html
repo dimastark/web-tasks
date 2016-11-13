@@ -1,8 +1,9 @@
 {% extends "layout.html" %}
+{% load staticfiles %}
 
 {% block content %}
 
-    <div class="section bord tile">
+    <div class="section bord tile row">
         <div class="col-md-12 typewriter welcome">
             <p class="welcome-text" id="typer"></p>
         </div>
@@ -10,7 +11,12 @@
             <p class="welcome-text">Добро пожаловать на мой скромный сайт.</p>
         </div>
     </div>
-    <div class="section bord tile">
+    <div class="section bord tile row">
+        <div class="col-md-6 my-div">
+            <div class="row">
+                <img class="my-photo" src="{% static 'app/images/me.png' %}">
+            </div>
+        </div>
         <div class="col-md-6">
             <p class="sect-text">
                 Меня зовут Дима Старков
@@ -18,16 +24,17 @@
             </p>
         </div>
     </div>
-    <div class="section bord tile">
-        <div class="col-md-offset-6 col-md-6">
+    <div class="section bord tile row">
+        <div class="col-md-6">
             <p class="sect-text">
                 Так же я студент <a href="https://vk.com/math_mech">МатМеха</a>
             </p>
         </div>
     </div>
-    <div class="section bord tile">
+    <div class="section bord tile row">
         <div class="col-xs-8 center-block">
             <p class="sect-text">Что я могу?</p>
+            <br/>
             {% include 'skills.html' %}
         </div>
     </div>

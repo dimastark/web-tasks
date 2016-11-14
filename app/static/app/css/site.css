@@ -104,7 +104,9 @@ html, body {
     .column {
         min-height: 520px;
     }
+}
 
+@media (max-width: 992px) {
     .my-div {
         display: none;
     }

@@ -92,7 +92,8 @@ html, body {
 }
 
 .my-photo {
-    height: 90vh;
+    max-height: 90vh;
+    width: auto;
 }
 
 .mail-div {

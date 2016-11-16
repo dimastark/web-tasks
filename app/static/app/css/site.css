@@ -101,7 +101,7 @@ html, body {
 
 .my-photo {
     max-height: 90vh;
-    width: 100%;
+    max-width: 100%;
 }
 
 .mail-div {

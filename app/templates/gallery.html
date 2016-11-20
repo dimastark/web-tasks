@@ -2,19 +2,88 @@
 {% load staticfiles %}
 
 {% block content %}
-     <div class="row">
-        <div class="col-lg-12 col-md-12 col-xs-12">
-            <div class="col-lg-12 col-md-12 col-xs-12 thumb">
-                <h1 class="page-header">Галерея</h1>
-                <comment class="sub-header">F1 for help</comment>
+    <div class="bord tile images">
+    <div class="col-lg-12 col-md-12 col-xs-12 page-header">
+        <h1>Галерея</h1>
+        <comment class="js">F1 for <a id="help-toggle" href="#help">help</a></comment>
+        <div class="alt">
+            <comment>Включите javascript для полной совместимости</comment>
+        </div>
+    </div>
+    <div class="row">
+        <div class="col-lg-12 col-md-12 col-xs-12 images">
+            {% for image in images %}
+            <div class="col-lg-3 col-md-4 col-xs-6">
+                <div class="thumbnail">
+                    <a class="thumbnail-view" href="#{{ image.id }}">
+                        <img class="load thumb-image"
+                             src="{% static image.src %}" alt="">
+                    </a>
+                    <div class="full-screen-view" id="{{ image.id }}">
+                        <div class="big-picture-img-div">
+                            <img src="{% static image.src %}" alt="" class="load big-image">
+                        </div>
+                        <a id="cross" class="cross" href="#">
+                            <img class="cross-img" alt=""
+                                 src="{% static 'app/gallery/cross.png' %}">
+                        </a>
+                    </div>
+                </div>
             </div>
-            {% for i in images %}
-            <div class="col-lg-3 col-md-4 col-xs-12 thumb">
-                <a class="thumbnail" href="#{% static image %}">
-                    <img class="img-responsive" src="{% static image %}" alt="">
-                </a>
+            {% endfor %}
+             <div id="help">
+                 <div class="help-text">
+                     <ul>
+                         <li>Миниатюры и полноэкранный режим работают без javascript</li>
+                         <li>Для полноценной работы галереи нужен javascript</li>
+                         <li>Листать картинки можно на стрелочки</li>
+                         <li>Картинки загружаются по мере необходимости</li>
+                         <li>F1 - отобразить эту подсказку</li>
+                         <li>Раздел "Обои" - можно выбрать фон сайта</li>
+                     </ul>
+                     <a class="help-cross" href="#">
+                         <img class="cross-img" alt=""
+                              src="{% static 'app/gallery/cross.png' %}">
+                     </a>
+                 </div>
+             </div>
+        </div>
+    </div>
+    </div>
+    <div class="bord tile images">
+    <div class="col-lg-12 col-md-12 col-xs-12 page-header">
+        <h1>Обои</h1>
+        <comment>Тут большие изображения. Берегите свой трафик.</comment>
+    </div>
+    <button class="gall-coll" data-toggle="collapse" data-target="#wallpapers">Открыть обои</button>
+    <div id="wallpapers" class="row collapse">
+        <div class="col-lg-12 col-md-12 col-xs-12 images">
+            {% for image in wallpapers %}
+            <div class="col-lg-3 col-md-4 col-xs-6">
+                <div class="wallpaper-thumbnail">
+                    <div class="js">
+                        <button id="#b{{ image.id }}"
+                                onclick="onButtonDown(this.id)"
+                                class="make-wallpaper">
+                            Сделать обоями сайта</button>
+                    </div>
+                    <a class="thumbnail-view" href="#{{ image.id }}">
+                        <img class="load thumb-image"
+                             src="{% static image.src %}" alt="">
+                    </a>
+                    <div class="full-screen-view" id="{{ image.id }}">
+                        <div class="big-picture-img-div">
+                            <img src="{% static image.src %}" alt="" class="load big-image">
+                        </div>
+                        <a id="cross" class="cross" href="#">
+                            <img class="cross-img" alt=""
+                                 src="{% static 'app/gallery/cross.png' %}">
+                        </a>
+                    </div>
+                </div>
             </div>
             {% endfor %}
         </div>
-     </div>
+    </div>
+    </div>
 {% endblock %}

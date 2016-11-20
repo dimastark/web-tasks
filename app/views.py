@@ -3,6 +3,7 @@
 from django.shortcuts import render
 from django.http import HttpRequest
 from datetime import datetime
+from app.utils import create_image
 
 
 def home(request):
@@ -44,11 +45,25 @@ def comments(request):
 def images(request):
     """Renders the images page."""
     assert isinstance(request, HttpRequest)
+    images_lst = [
+        'me.png', 'antigravity.png', 'dont.png',
+        'brainbreak.png', 'cat.png', 'todo.png',
+        'compiling.png', 'catwizz.png', 'catwar.png',
+        'gods.png', 'duck.png', 'python.png',
+        'dont.png', 'team.png'
+    ]
     return render(request, 'gallery.html', {
             'name': 'images',
             'title': 'Картиночки',
-            'message': '404',
-            'additional': "Здесь скоро будут смешные мемасы и красивые изображения",
             'year': datetime.now().year,
+            'images': [
+                create_image(image, i)
+                for i, image in enumerate(images_lst)
+            ],
+            'wallpapers': [
+                create_image('wall1.png', 'wall1'),
+                create_image('wall3.png', 'wall3'),
+                create_image('wall4.png', 'wall4'),
+            ]
         }
     )

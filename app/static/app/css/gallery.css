@@ -115,6 +115,45 @@
     width: 102%;
 }
 
+#hide-walls {
+    display: none;
+}
+
+.hide-label {
+    background: #fff;
+    box-shadow: #1b1b1b;
+    margin-top: 0;
+    margin-left: 12px;
+    padding: 5px;
+    opacity: .7;
+}
+
+.hide-label:hover {
+    opacity: 1;
+}
+
+.hide-label:after {
+    content: "Открыть обои";
+    display: block;
+    min-width: 100px;
+    text-align: center;
+}
+
+#hide-walls:checked ~ .hide-label:after {
+    content: "Скрыть обои";
+    min-width: 100px;
+    display: block;
+    text-align: center;
+}
+
+.hideable {
+    display: none;
+}
+
+#hide-walls:checked ~ .hideable {
+    display: block;
+}
+
 @media (max-width: 500px) {
     .thumbnail {
         height: 150px;

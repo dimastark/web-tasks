@@ -59,14 +59,15 @@ function onLoadBody() {
     if (wallpaperCookie) {
         setWallpaper(wallpaperCookie);
     }
+    document.onhelp = function (event) {
+        event.preventDefault();
+        document.getElementById('cross').click();
+    };
 }
 
 
 function onKeyDown(e) {
     switch (e.keyCode) {
-        case 27:
-            document.getElementById('cross').click();
-            break;
         case 37:
             location.hash = getNextLocation(location.hash, -1);
             break;

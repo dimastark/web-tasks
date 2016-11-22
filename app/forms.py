@@ -6,12 +6,18 @@ from django.utils.translation import ugettext_lazy as _
 
 
 class BootstrapAuthenticationForm(AuthenticationForm):
-    """Authentication form which uses boostrap CSS."""
-    username = forms.CharField(max_length=254,
-                               widget=forms.TextInput({
-                                   'class': 'form-control',
-                                   'placeholder': 'Логин'}))
-    password = forms.CharField(label=_("Password"),
-                               widget=forms.PasswordInput({
-                                   'class': 'form-control',
-                                   'placeholder': 'Пасворд'}))
+    """Authentication form which uses bootstrap CSS."""
+    username = forms.CharField(
+        max_length=20,
+        widget=forms.TextInput({
+            'class': 'form-control',
+            'placeholder': 'Логин'
+        })
+    )
+    password = forms.CharField(
+        label=_("Password"),
+        widget=forms.PasswordInput({
+            'class': 'form-control',
+            'placeholder': 'Пасворд'
+        })
+    )

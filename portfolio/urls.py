@@ -3,7 +3,9 @@ from datetime import datetime
 
 from django.conf.urls import url, include
 from django.contrib import admin
+from django.contrib.auth.forms import UserCreationForm
 from django.contrib.auth.views import login, logout
+from django.views.generic import CreateView
 
 from app.forms import BootstrapAuthenticationForm
 from app.views import home, comments, contact, images
@@ -25,4 +27,9 @@ urlpatterns = [
     }, name='login'),
     url(r'^logout/$', logout, {'next_page': '/'}, name='logout'),
     url(r'^admin/', include(admin.site.urls)),
+    url(r'^register/', CreateView.as_view(
+            template_name='login.html',
+            form_class=UserCreationForm,
+            success_url='/'
+    )),
 ]

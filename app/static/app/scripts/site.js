@@ -92,6 +92,6 @@ function setWallpaper(name) {
     if (['wall1', 'wall3', 'wall4'].indexOf(name) == -1) {
         return;
     }
-    var style = "url('static/app/gallery/" + name + ".png') ";
+    var style = "url('/static/app/gallery/" + name + ".png') ";
     document.body.style.background = style + 'no-repeat fixed center center';
 }

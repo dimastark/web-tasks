@@ -34,13 +34,13 @@ $(document).ready(function () {
 
 
 function getNextLocation(current, dir) {
-    if (current.indexOf('image') === 1) {
+    if (current.indexOf('image') === 1 && current.indexOf('wall') === -1) {
         var int = Number(current.slice(6)) + dir;
         var element = document.getElementById('image' + int);
         if (element !== null) {
             return '#image' + int;
         } else {
-            return dir === 1 ? '#image0' : '#image12';
+            return dir === 1 ? '#image0' : '#image13';
         }
     }
     return current;

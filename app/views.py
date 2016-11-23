@@ -46,11 +46,11 @@ def images(request):
     """Renders the images page."""
     assert isinstance(request, HttpRequest)
     images_lst = [
-        'me.png', 'antigravity.png', 'dont.png',
-        'brainbreak.png', 'cat.png', 'todo.png',
-        'compiling.png', 'catwizz.png', 'catwar.png',
-        'gods.png', 'duck.png', 'python.png',
-        'dont.png', 'team.png'
+        'me', 'antigravity', 'dont',
+        'brainbreak', 'cat', 'todo',
+        'compiling', 'catwizz', 'catwar',
+        'gods', 'duck', 'python',
+        'dont', 'team'
     ]
     return render(request, 'gallery.html', {
             'name': 'images',
@@ -61,9 +61,9 @@ def images(request):
                 for i, image in enumerate(images_lst)
             ],
             'wallpapers': [
-                create_image('wall1.png', 'wall1'),
-                create_image('wall3.png', 'wall3'),
-                create_image('wall4.png', 'wall4'),
+                create_image('wall1', 'wall1'),
+                create_image('wall3', 'wall3'),
+                create_image('wall4', 'wall4'),
             ]
         }
     )

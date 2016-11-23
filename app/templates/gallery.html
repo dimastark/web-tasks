@@ -17,7 +17,7 @@
                 <div class="thumbnail">
                     <a class="thumbnail-view" href="#{{ image.id }}">
                         <img class="load thumb-image"
-                             src="{% static image.src %}" alt="">
+                             src="{% static image.thumb %}" alt="">
                     </a>
                     <div class="full-screen-view" id="{{ image.id }}">
                         <div class="big-picture-img-div">
@@ -61,7 +61,7 @@
         <div class="col-lg-12 col-md-12 col-xs-12 images">
             {% for image in wallpapers %}
             <div class="col-lg-3 col-md-4 col-xs-6">
-                <div class="wallpaper-thumbnail">
+                <div class="thumbnail">
                     <div class="js">
                         <button id="#b{{ image.id }}"
                                 onclick="onButtonDown(this.id)"
@@ -70,7 +70,7 @@
                     </div>
                     <a class="thumbnail-view" href="#{{ image.id }}">
                         <img class="load thumb-image"
-                             src="{% static image.src %}" alt="">
+                             src="{% static image.thumb %}" alt="">
                     </a>
                     <div class="full-screen-view" id="{{ image.id }}">
                         <div class="big-picture-img-div">

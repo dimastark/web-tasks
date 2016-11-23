@@ -1,7 +1,9 @@
 .progress {
     position: relative;
-    background-color: #222222;
-	height: 25px;
+    background-color: #222;
+    margin: 10px;
+    height: 5vh;
+    font-size: 3vh;
 }
 
 .progress-bar {

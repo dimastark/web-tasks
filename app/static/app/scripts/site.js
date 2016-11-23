@@ -93,5 +93,5 @@ function setWallpaper(name) {
         return;
     }
     var style = "url('/static/app/gallery/" + name + ".png') ";
-    document.body.style.background = style + 'no-repeat fixed center center';
+    document.body.style.background = style + 'repeat fixed center center';
 }

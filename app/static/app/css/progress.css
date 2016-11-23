@@ -1,6 +1,27 @@
 .progress {
     position: relative;
+    background-color: #222222;
 	height: 25px;
+}
+
+.progress-bar {
+    background-color: #2a9fd6;
+}
+
+.progress-bar-success {
+    background-color: #77b300;
+}
+
+.progress-bar-info {
+    background-color: #9933cc;
+}
+
+.progress-bar-warning {
+    background-color: #ff8800;
+}
+
+.progress-bar-danger {
+    background-color: #cc0000;
 }
 
 .progress > .progress-type {

@@ -2,6 +2,26 @@
 
 body {
     background-size: cover;
+    font-size: 14px;
+    line-height: 1.42857143;
+    color: #888888;
+    background-color: #060606;
+}
+
+h3, .h3 {
+    font-size: 40px;
+}
+
+.btn-default {
+    color: #ffffff;
+    background-color: #424242;
+    border-color: #424242;
+}
+
+h1, h2, h3, h4, h5, h6, .h1, .h2, .h3, .h4, .h5, .h6 {
+    font-weight: 500;
+    line-height: 1.1;
+    color: #ffffff;
 }
 
 @font-face {

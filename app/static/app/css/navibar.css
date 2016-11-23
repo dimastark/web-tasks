@@ -6,6 +6,16 @@
     color: white;
 }
 
+.navbar-nav > li > a:hover {
+    color: #2cc3fd;
+}
+
+.nav > li > a:hover, .nav > li > a:focus {
+    text-decoration: none;
+    background-color: #222222;
+}
+
+
 .navbar-nav > .active > a,
 .navbar-nav > .active > a:hover,
 .navbar-nav > .active > a:focus {
@@ -18,7 +28,7 @@
 #top, #bottom, #left, #right {
 	background: #2cc3fd;
 	position: fixed;
-    z-index: 10;
+    z-index: 999999999;
 }
 
 #left, #right {

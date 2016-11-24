@@ -24,12 +24,6 @@
     }
 }
 
-.btn-primary {
-    color: #ffffff;
-    background-color: #2a9fd6;
-    border-color: #2a9fd6;
-}
-
 @media (min-width: 991px) {
     .controls-div
      {

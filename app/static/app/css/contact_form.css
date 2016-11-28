@@ -4,35 +4,19 @@
 
 .form-area button { width: 100% }
 
-.js { display: none }
+.form-group input, textarea { width: 100% }
 
-.form-group input, textarea {
-	margin: auto;
-	width: 100%;
-}
-
-.form-area {
-	padding: 10px 40px 10px;
-	margin: 10px 0 39px;
-}
-
-.btn-primary {
-    color: #ffffff;
-    background-color: #2a9fd6;
-    border-color: #2a9fd6;
-}
+.form-area { padding: 10px 40px 10px }
 
 @media (max-width: 768px) {
-    .controls-div
-     {
+    .controls-div {
         padding-left: 0;
         padding-right: 0;
     }
 }
 
 @media (min-width: 991px) {
-    .controls-div
-     {
+    .controls-div {
         padding-left: 0;
         padding-right: 0;
      }

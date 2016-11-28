@@ -4,17 +4,15 @@
     display: inline-block;
     width: 100%;
     color: white;
+    transition: color .5s ease;
 }
 
-.navbar-nav > li > a:hover {
-    color: #2cc3fd;
-}
+.navbar-nav > li > a:hover { color: #2cc3fd }
 
 .nav > li > a:hover, .nav > li > a:focus {
     text-decoration: none;
     background-color: #222222;
 }
-
 
 .navbar-nav > .active > a,
 .navbar-nav > .active > a:hover,
@@ -26,7 +24,7 @@
 .navbar-nav > li > a:hover { color: #2cc3fd }
 
 #top, #bottom, #left, #right {
-	background: #2cc3fd;
+	background: #2cc3f0;
 	position: fixed;
     z-index: 999999999;
 }
@@ -41,7 +39,7 @@
 	height: 2px;
 }
 
-#left { left: 0; }
-#right { right: 0; }
-#top { top: 0; }
-#bottom { bottom: 0; }
+#left { left: 0 }
+#right { right: 0 }
+#top { top: 0 }
+#bottom { bottom: 0 }

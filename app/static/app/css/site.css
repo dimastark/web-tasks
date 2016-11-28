@@ -1,41 +1,84 @@
 ﻿@import url(http://fonts.googleapis.com/css?family=Anonymous+Pro);
 
-body {
-    background-size: cover;
-    font-size: 14px;
-    line-height: 1.42857143;
-    color: #888888;
-    background-color: #060606;
-}
-
-h3, .h3 {
-    font-size: 40px;
-}
-
-.btn-default {
-    color: #ffffff;
-    border-color: #424242;
-}
-
-h1, h2, h3, h4, h5, h6, .h1, .h2, .h3, .h4, .h5, .h6 {
-    font-weight: 500;
-    line-height: 1.1;
-    color: #ffffff;
-}
-
-@font-face {
-    font-family: 'Anonymous Pro';
-}
+@font-face { font-family: 'Anonymous Pro' }
 
 html, body {
+    background-size: cover;
+    color: #888;
     height: 100%;
     width: 100%;
     font-family: "Anonymous Pro", serif;
 }
 
+h1, h2, h3, h4, h5, h6 {
+    color: #fff;
+    font-family: "Anonymous Pro", serif;
+}
+
+h3 {
+    font-size: 40px;
+    font-weight: 500;
+    line-height: 1;
+}
+
 .container {
     padding-left: 10px;
     padding-right: 10px;
+}
+
+.bg img {
+    z-index: -1;
+    position: absolute;
+    top: 0;
+    left: 0;
+    right: 0;
+    bottom: 0;
+    margin: auto;
+    min-width: 50%;
+    min-height: 50%;
+}
+
+.section {
+    display: flex;
+    align-items: center;
+    margin-left: 0;
+    width: 100%;
+    min-height: 300px;
+    height: 100vh;
+}
+
+.welcome {
+    text-align: center;
+    margin: 0 auto;
+}
+
+.welcome-text {
+    font-size: 5vh;
+    color: white;
+}
+
+.sect-text {
+    font-size: 5vh;
+    color: white;
+    text-align: center;
+}
+
+.my-photo {
+    max-height: 90vh;
+    max-width: 100%;
+}
+
+.mail-div {
+    margin-left: 0;
+    margin-right: 0;
+}
+
+.bg {
+    position: fixed;
+    top: -50%;
+    left: -50%;
+    width: 200%;
+    height: 200%;
 }
 
 .wrapper {
@@ -48,7 +91,7 @@ html, body {
     color: #2cc3fd;
 }
 
-.togg {
+.menu-toggle {
     padding-left: 20px;
     float: left;
     color: #2cc3fd;
@@ -62,105 +105,33 @@ html, body {
     background: #1b1b1b;
 }
 
-.shadowed {
-    box-shadow: 0 0 10px rgba(0,0,0,0.5);
+.img-link {
+    margin: auto;
+    transition: opacity .5s ease;
 }
+
+.shadowed { box-shadow: 0 0 10px rgba(0, 0, 0, .5) }
 
 .bord { border: #2cc3fd solid 1px }
 
 .mail { float: right }
 
-.img-link {
-    margin: auto;
-}
-
 .img-par { text-align: center }
 
-.img-link :hover { opacity: 1 }
+.img-link:hover { opacity: 1 }
 
-.img-link {
-    opacity: 1;
-}
+.img-link { opacity: 1 }
 
-.img-link:hover {
-    opacity: 0.7;
-}
-
-
-.section {
-    display: flex;
-    align-items: center;
-    margin-left: 0;
-    width: 100%;
-    min-height: 500px;
-    height: 100vh;
-}
-
-.welcome {
-    text-align: center;
-    margin: 0 auto;
-}
-
-.welcome-text {
-    font-size: 300%;
-    font-size: 5vh;
-    color: white;
-}
-
-.sect-text {
-    font-size: 300%;
-    font-size: 5vh;
-    color: white;
-    text-align: center;
-}
+.img-link:hover { opacity: .5 }
 
 .copyright { text-align: center }
 
 .typewriter { text-align: center }
 
-.thumb {
-    margin-bottom: 30px;
-}
-
-.my-photo {
-    max-height: 90vh;
-    max-width: 100%;
-}
-
-.mail-div {
-    margin-left: 0;
-    margin-right: 0;
-}
+.thumb { margin-bottom: 30px }
 
 .js { display: none }
 
-.bg {
-    position: fixed;
-    top: -50%;
-    left: -50%;
-    width: 200%;
-    height: 200%;
-}
-.bg img {
-    z-index: -1;
-    position: absolute;
-    top: 0;
-    left: 0;
-    right: 0;
-    bottom: 0;
-    margin: auto;
-    min-width: 50%;
-    min-height: 50%;
-}
+@media (min-width: 992px) { .column { min-height: 560px } }
 
-@media (min-width: 992px) {
-    .column {
-        min-height: 560px;
-    }
-}
-
-@media (max-width: 992px) {
-    .my-div {
-        display: none;
-    }
-}
+@media (max-width: 992px) { .my-div { display: none } }

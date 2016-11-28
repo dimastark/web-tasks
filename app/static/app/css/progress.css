@@ -1,29 +1,9 @@
 .progress {
     position: relative;
-    background-color: #222;
+    background-color: #333;
     margin: 10px;
     height: 5vh;
     font-size: 3vh;
-}
-
-.progress-bar {
-    background-color: #2a9fd6;
-}
-
-.progress-bar-success {
-    background-color: #77b300;
-}
-
-.progress-bar-info {
-    background-color: #9933cc;
-}
-
-.progress-bar-warning {
-    background-color: #ff8800;
-}
-
-.progress-bar-danger {
-    background-color: #cc0000;
 }
 
 .progress > .progress-type {
@@ -32,7 +12,7 @@
 	font-weight: 800;
 	padding: 3px 30px 2px 10px;
 	color: rgb(255, 255, 255);
-	background-color: rgba(25, 25, 25, 0.2);
+	background-color: rgba(25, 25, 25, .2);
 }
 
 .progress > .progress-completed {

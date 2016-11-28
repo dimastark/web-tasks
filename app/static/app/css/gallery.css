@@ -8,8 +8,6 @@
 
 .page-header { margin: 0 auto 30px }
 
-.page-header h1 { font-family: "Anonymous Pro", serif }
-
 .full-screen-view:target {
     top: 0;
     left: 0;

@@ -71,7 +71,6 @@ html, body {
 .mail { float: right }
 
 .img-link {
-    filter: invert(100%);
     margin: auto;
 }
 
@@ -93,6 +92,7 @@ html, body {
     align-items: center;
     margin-left: 0;
     width: 100%;
+    min-height: 500px;
     height: 100vh;
 }
 
@@ -102,11 +102,13 @@ html, body {
 }
 
 .welcome-text {
+    font-size: 300%;
     font-size: 5vh;
     color: white;
 }
 
 .sect-text {
+    font-size: 300%;
     font-size: 5vh;
     color: white;
     text-align: center;
@@ -153,7 +155,7 @@ html, body {
 
 @media (min-width: 992px) {
     .column {
-        min-height: 520px;
+        min-height: 560px;
     }
 }
 

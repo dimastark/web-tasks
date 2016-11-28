@@ -16,6 +16,12 @@
 	margin: 10px 0 39px;
 }
 
+.btn-primary {
+    color: #ffffff;
+    background-color: #2a9fd6;
+    border-color: #2a9fd6;
+}
+
 @media (max-width: 768px) {
     .controls-div
      {
@@ -24,16 +30,10 @@
     }
 }
 
-.btn-primary {
-    color: #ffffff;
-    background-color: #2a9fd6;
-    border-color: #2a9fd6;
-}
-
 @media (min-width: 991px) {
     .controls-div
      {
         padding-left: 0;
         padding-right: 0;
-    }
+     }
 }

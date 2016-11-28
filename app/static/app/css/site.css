@@ -3,6 +3,7 @@
 @font-face { font-family: 'Anonymous Pro' }
 
 html, body {
+    background-color: #000;
     background-size: cover;
     color: #888;
     height: 100%;

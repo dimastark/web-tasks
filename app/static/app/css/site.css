@@ -51,7 +51,7 @@ h3 {
     margin-left: 0;
     width: 100%;
     min-height: 300px;
-    height: 100vh;
+    height: 80vh;
 }
 
 .welcome {
@@ -71,7 +71,7 @@ h3 {
 }
 
 .my-photo {
-    max-height: 90vh;
+    max-height: 70vh;
     max-width: 100%;
 }
 
@@ -115,6 +115,18 @@ h3 {
 .img-link {
     margin: auto;
     transition: opacity .5s ease;
+}
+
+.centered {
+    text-align: center;
+    position: fixed;
+    margin: auto;
+    height: 45vh;
+    width: 350px;
+    top: 0;
+    bottom: 0;
+    left: 0;
+    right: 0;
 }
 
 .shadowed { box-shadow: 0 0 10px rgba(0, 0, 0, .5) }

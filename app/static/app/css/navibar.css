@@ -2,7 +2,7 @@
     background: #1b1b1b;
     border: #2cc3fd solid 2px;
     display: inline-block;
-    min-width: 110px;
+    min-width: 100%;
     text-align: center;
     color: white;
     transition: color .5s ease;
@@ -13,6 +13,10 @@
 .nav > li > a:hover, .nav > li > a:focus {
     text-decoration: none;
     background-color: #222222;
+}
+
+.navbar-toggle {
+    background: #000;
 }
 
 .navbar-nav > .active > a,

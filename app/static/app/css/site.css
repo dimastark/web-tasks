@@ -2,9 +2,15 @@
 
 @font-face { font-family: 'Anonymous Pro' }
 
-html, body {
+body {
     background-color: #000;
+}
+
+html, body {
     background-size: cover;
+    -webkit-background-size: cover;
+    -moz-background-size: cover;
+    -o-background-size: cover;
     color: #888;
     height: 100%;
     width: 100%;

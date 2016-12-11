@@ -14,12 +14,13 @@ html, body {
     color: #888;
     height: 100%;
     width: 100%;
-    font-family: "Anonymous Pro", serif;
+    font-family: "Anonymous Pro", sans-serif;
+
 }
 
 h1, h2, h3, h4, h5, h6 {
     color: #fff;
-    font-family: "Anonymous Pro", serif;
+    font-family: "Anonymous Pro", sans-serif;
 }
 
 h3 {
@@ -115,18 +116,6 @@ h3 {
 .img-link {
     margin: auto;
     transition: opacity .5s ease;
-}
-
-.centered {
-    text-align: center;
-    position: fixed;
-    margin: auto;
-    height: 45vh;
-    width: 350px;
-    top: 0;
-    bottom: 0;
-    left: 0;
-    right: 0;
 }
 
 .shadowed { box-shadow: 0 0 10px rgba(0, 0, 0, .5) }

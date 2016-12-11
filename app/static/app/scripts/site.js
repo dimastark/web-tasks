@@ -5,9 +5,9 @@ $('.js').show();
 $(document).ready(function () {
     var chLeft = $('#characterLeft');
     if (chLeft) {
-        chLeft.text('Осталось: 120');
+        chLeft.text('Осталось: 255');
         $('#message').keydown(function () {
-            var max = 120;
+            var max = 255;
             var len = $(this).val().length;
             if (len >= max) {
                 $('#characterLeft').text('Всё, хватит');
@@ -82,9 +82,11 @@ function onKeyDown(e) {
 
 
 function onButtonDown(string) {
+    var now = new Date();
+    now.setHours(now.getHours() + 1);
     var name = string.slice(7);
     setWallpaper(name);
-    document.cookie = "wallpaper=" + name;
+    document.cookie = "wallpaper=" + name + ';expires=' + now.toUTCString() + ';path=/';
 }
 
 

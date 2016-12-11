@@ -36,6 +36,7 @@ DATABASES = {
 }
 
 LOGIN_URL = '/login'
+LOGIN_REDIRECT_URL = '/'
 
 # Local time zone
 TIME_ZONE = 'Asia/Yekaterinburg'

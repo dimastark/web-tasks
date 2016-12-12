@@ -14,8 +14,8 @@ def create_image(name, image_id):
     )
 
 
-async def send_me_message(message, sender, name):
-    msg = MIMEText(message)
+def send_me_message(message, sender, name):
+    msg = MIMEText(message, 'plain', 'utf-8')
     me = 'dstarkdev@gmail.com'
     bot = 'odlyamenya@mail.ru'
     msg['Subject'] = 'Сообщение от: "{}" с email: {}'.format(name, sender)

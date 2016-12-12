@@ -12,7 +12,7 @@ admin.autodiscover()
 urlpatterns = [
     url(r'^$', home, name='home'),
     url(r'^contact$', contact, name='contact'),
-    url(r'^thanks$', thanks, name='thanks'),
+    url(r'^thanks/$', thanks, name='thanks'),
     url(r'^comments$', comments, name='comments'),
     url(r'^images$', images, name='images'),
     url(r'^login/$', login, {

@@ -27,7 +27,7 @@ def contact(request):
         if form.is_valid():
             data = form.cleaned_data
             send_me_message(data['message'], data['your_email'], data['your_name'])
-            return redirect('thanks')
+            return redirect('thanks/')
     return render(request, 'contact.html', {
             'name': 'contact',
             'form': ContactForm,
@@ -49,7 +49,7 @@ def register(request):
                 username=name,
                 password=password,
             )
-            return redirect('thanks')
+            return redirect('thanks/')
     return render(request, 'login.html', {
         'form': BootstrapAuthenticationForm,
         'name': 'login',

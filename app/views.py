@@ -50,11 +50,20 @@ def register(request):
                 password=password,
             )
             return redirect('thanks/')
+        else:
+            return render(request, 'login.html', {
+                'form': BootstrapAuthenticationForm,
+                'name': 'login',
+                'title': 'Вход',
+                'year': datetime.now().year,
+                'error': 'Либо пароли не совпали, либо логин занят'
+            })
     return render(request, 'login.html', {
         'form': BootstrapAuthenticationForm,
         'name': 'login',
         'title': 'Вход',
         'year': datetime.now().year,
+        'error': None,
     })
 
 

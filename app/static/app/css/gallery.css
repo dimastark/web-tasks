@@ -9,13 +9,14 @@
 .page-header { margin: 0 auto 30px }
 
 .full-screen-view:target {
+    animation: fade .5s ease-in;
     top: 0;
     left: 0;
     width: 100%;
     height: 100%;
     display: inline-block;
     position: fixed;
-    background-color: rgba(0,0,0,.4);
+    background-color: rgba(0,0,0,.8);
     z-index: 1003;
 }
 
@@ -53,9 +54,10 @@
 .help-cross > .cross-img {
     z-index: 1002;
     position: absolute;
-    width: 20px;
-    right: 2px;
-    top: 2px;
+    width: 15px;
+    height: 15px;
+    right: 5px;
+    top: 5px;
 }
 
 .images {
@@ -71,11 +73,13 @@
 #help:target {
     top: 0;
     left: 0;
+    animation: fade .5s ease;
     width: 100%;
     height: 100%;
     display: inline-block;
+    visibility: visible;
     position: fixed;
-    background-color: rgba(0,0,0,.4);
+    background-color: rgba(0,0,0,.7);
     z-index: 1001;
 }
 
@@ -144,6 +148,15 @@
 
 #hide-walls:checked ~ .hideable {
     display: block;
+}
+
+@keyframes fade {
+    from {
+        opacity: 0;
+    }
+    to {
+        opacity: 1;
+    }
 }
 
 @media (max-width: 500px) {

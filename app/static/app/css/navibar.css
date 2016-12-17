@@ -8,6 +8,13 @@
     transition: color .5s ease;
 }
 
+.navbar-brand {
+    color: #4cae4c;
+    text-align: center;
+    width: 100%;
+    min-width: 150px;
+}
+
 .navbar-nav > li > a:hover { color: #2cc3fd }
 
 .nav > li > a:hover, .nav > li > a:focus {

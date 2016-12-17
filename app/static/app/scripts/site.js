@@ -59,10 +59,17 @@ function onLoadBody() {
     if (wallpaperCookie) {
         setWallpaper(wallpaperCookie);
     }
-    document.onhelp = function (event) {
+    var onhelp = function (event) {
         event.preventDefault();
         document.getElementById('cross').click();
+        event.returnValue = false;
+        event.keyCode = 0;
+        event.preventDefault();
+        event.stopPropagation();
+        return false;
     };
+    document.onhelp = onhelp;
+    window.onhelp = onhelp;
 }
 
 

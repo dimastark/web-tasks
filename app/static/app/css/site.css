@@ -48,8 +48,12 @@ h3 {
 
 .section {
     display: flex;
+    background: #1b1b1b;
     align-items: center;
     margin-left: 0;
+    margin-right: 0;
+    margin-bottom: 20px;
+    padding: 20px;
     width: 100%;
     min-height: 300px;
     height: 80vh;
@@ -63,6 +67,12 @@ h3 {
 .welcome-text {
     font-size: 5vh;
     color: white;
+}
+
+.username {
+    font-size: 5vh;
+    color: #4cae4c;
+    margin-bottom: -40px;
 }
 
 .sect-text {
@@ -95,6 +105,7 @@ h3 {
 }
 
 .footer, .push {
+    text-align: center;
 	height: 30px;
     color: #2cc3fd;
 }
@@ -118,7 +129,42 @@ h3 {
     transition: opacity .5s ease;
 }
 
-.shadowed { box-shadow: 0 0 10px rgba(0, 0, 0, .5) }
+.visits {
+    z-index: 13;
+    border-radius: 10px;
+    color: #000;
+    padding: 20px;
+    top: -310px;
+    width: 310px;
+    height: 310px;
+    background-color: #fff;
+    display: none;
+    position: relative;
+}
+
+.visits h1, h4 {
+    color: #000;
+}
+
+.visits p {
+    text-align: left;
+}
+
+.copyright:hover ~ .visits, .visits:hover {
+    display: inline-block;
+}
+
+.copyright:hover {
+    text-decoration: underline;
+}
+
+.copyright {
+    position: relative;
+    text-align: center;
+    z-index: 9;
+}
+
+.shadowed { box-shadow: 0 0 10px rgba(0, 0, 0, .8) }
 
 .bord { border: #2cc3fd solid 1px }
 
@@ -131,8 +177,6 @@ h3 {
 .img-link { opacity: 1 }
 
 .img-link:hover { opacity: .5 }
-
-.copyright { text-align: center }
 
 .typewriter { text-align: center }
 

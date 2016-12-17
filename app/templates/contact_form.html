@@ -22,6 +22,7 @@
         <button type="submit"
                 id="submit"
                 name="submit"
-                class="btn btn-primary">Послать</button>
+                {% if button_class == 'btn-success' %}disabled{% endif %}
+                class="btn {{ button_class }}">{{ button_text }}</button>
     </form>
 </div>

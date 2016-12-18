@@ -71,8 +71,7 @@ h3 {
 
 .username {
     font-size: 5vh;
-    color: #4cae4c;
-    margin-bottom: -40px;
+    color: #2a9fd6;
 }
 
 .sect-text {
@@ -110,6 +109,11 @@ h3 {
     color: #2cc3fd;
 }
 
+.footer {
+    width: 300px;
+    margin: auto;
+}
+
 .menu-toggle {
     padding-left: 20px;
     float: left;
@@ -126,6 +130,7 @@ h3 {
 
 .img-link {
     margin: auto;
+    cursor: pointer;
     transition: opacity .5s ease;
 }
 
@@ -134,9 +139,12 @@ h3 {
     border-radius: 10px;
     color: #000;
     padding: 20px;
-    top: -310px;
-    width: 310px;
-    height: 310px;
+    top: -170px;
+    left: 0;
+    right: 0;
+    margin: 0 auto;
+    width: 270px;
+    height: 170px;
     background-color: #fff;
     display: none;
     position: relative;
@@ -151,7 +159,7 @@ h3 {
 }
 
 .copyright:hover ~ .visits, .visits:hover {
-    display: inline-block;
+    display: block;
 }
 
 .copyright:hover {
@@ -164,9 +172,19 @@ h3 {
     z-index: 9;
 }
 
+.validators {
+    width: 100%;
+}
+
+.validators a {
+    text-decoration: none;
+}
+
 .shadowed { box-shadow: 0 0 10px rgba(0, 0, 0, .8) }
 
 .bord { border: #2cc3fd solid 1px }
+
+.bord-2 { border: #2a9fd6 solid 2px }
 
 .mail { float: right }
 

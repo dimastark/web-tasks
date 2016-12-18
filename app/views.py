@@ -1,4 +1,5 @@
 """ Definition of views. """
+from multiprocessing import Process
 from django.contrib.auth.models import User
 from django.http import HttpResponse
 from django.shortcuts import render, redirect
@@ -6,7 +7,7 @@ from django.http import HttpRequest
 from datetime import datetime
 
 from app.forms import ContactForm, BootstrapAuthenticationForm, register_form
-from app.utils import create_image, send_me_message, make_visit
+from app.utils import create_image, send_me_message, make_visit, get_counter_image, get_client_ip
 
 
 def home(request):
@@ -31,7 +32,12 @@ def contact(request):
         form = ContactForm(request.POST)
         if form.is_valid():
             data = form.cleaned_data
-            send_me_message(data['message'], data['your_email'], data['your_name'])
+            proc = Process(
+                target=send_me_message,
+                args=(data['message'], data['your_email'], data['your_name'])
+            )
+            proc.daemon = True
+            proc.start()
             btn_class = 'btn-success'
             btn_text = 'Спасибо!'
     return render(request, 'contact.html', {
@@ -128,7 +134,8 @@ def visits(request):
     """Renders the images page."""
     assert isinstance(request, HttpRequest)
     make_visit(request, '/visits')
-    response = HttpResponse(content=b'')
+    bts = get_counter_image(request.GET.get('path'), get_client_ip(request)).read()
+    response = HttpResponse(content=bts)
     response['Content-Type'] = 'image/png'
     response['Content-Disposition'] = 'attachment;filename=counter.png'
     return response

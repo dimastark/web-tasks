@@ -11,6 +11,7 @@ from app.views import home, comments, contact, images, thanks, register, visits
 admin.autodiscover()
 urlpatterns = [
     url(r'^$', home, name='home'),
+    url(r'^home$', home, name='home'),
     url(r'^contact$', contact, name='contact'),
     url(r'^thanks/$', thanks, name='thanks'),
     url(r'^comments$', comments, name='comments'),

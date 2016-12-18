@@ -6,15 +6,15 @@ from django.contrib import admin
 from django.contrib.auth.views import login, logout
 
 from app.forms import BootstrapAuthenticationForm
-from app.views import home, comments, contact, images, thanks, register, visits
+from app.views import home, comments, contact, images, register, visits, visits_list
 
 admin.autodiscover()
 urlpatterns = [
     url(r'^$', home, name='home'),
     url(r'^home$', home, name='home'),
     url(r'^contact$', contact, name='contact'),
-    url(r'^thanks/$', thanks, name='thanks'),
     url(r'^comments$', comments, name='comments'),
+    url(r'^list$', visits_list, name='visits'),
     url(r'^images$', images, name='images'),
     url(r'^visits$', visits, name='visits'),
     url(r'^login/$', login, {

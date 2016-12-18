@@ -50,9 +50,7 @@ h3 {
     display: flex;
     background: #1b1b1b;
     align-items: center;
-    margin-left: 0;
-    margin-right: 0;
-    margin-bottom: 20px;
+    margin: 10px 0;
     padding: 20px;
     width: 100%;
     min-height: 300px;
@@ -135,6 +133,7 @@ h3 {
 }
 
 .visits {
+    transition: transform 1s ease;
     z-index: 13;
     border-radius: 10px;
     color: #000;
@@ -164,6 +163,14 @@ h3 {
 
 .copyright:hover {
     text-decoration: underline;
+}
+
+.visits-link > img {
+    opacity: .8;
+}
+
+.visits-link:hover > img {
+    opacity: 1;
 }
 
 .copyright {

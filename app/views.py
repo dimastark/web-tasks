@@ -95,6 +95,20 @@ def comments(request):
     )
 
 
+def visits_list(request):
+    """Renders the comments page."""
+    assert isinstance(request, HttpRequest)
+    make_visit(request, '/list')
+    return render(request, 'notfound.html', {
+            'name': 'list',
+            'title': 'Комменты и отзывы',
+            'message': '404',
+            'additional': 'Тут можно будет писать гневные комментарии',
+            'year': datetime.now().year,
+        }
+    )
+
+
 def images(request):
     """Renders the images page."""
     assert isinstance(request, HttpRequest)
@@ -121,13 +135,6 @@ def images(request):
             ]
         }
     )
-
-
-def thanks(request):
-    """Renders the images page."""
-    assert isinstance(request, HttpRequest)
-    make_visit(request, '/thanks')
-    return render(request, 'thanks.html')
 
 
 def visits(request):

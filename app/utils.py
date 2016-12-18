@@ -20,7 +20,10 @@ FONT_PATH = os.path.join(BASE_PATH, 'static', 'app', 'fonts', 'Hack-Bold.ttf')
 
 
 def get_last_visit(page, user_ip):
-    return Visit.objects.filter(ip=user_ip, page=page).order_by('-id')[1].created
+    try:
+        return Visit.objects.filter(ip=user_ip, page=page).order_by('-id')[1].created
+    except IndexError:
+        return datetime.datetime.now()
 
 
 def get_visits_count():

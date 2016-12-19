@@ -27,16 +27,16 @@ def get_last_visit(page, user_ip):
 
 
 def get_visits_count():
-    now_day = datetime.datetime.now().day
+    now_day = datetime.date.today()
     all_views = Visit.objects.filter(is_view=True).count()
-    today_views = Visit.objects.filter(is_view=True, created__day=now_day).count()
+    today_views = Visit.objects.filter(is_view=True, created__gt=now_day).count()
     return all_views, today_views
 
 
 def get_views_count():
-    now_day = datetime.datetime.now().day
+    now_day = datetime.date.today()
     all_views = Visit.objects.count()
-    today_views = Visit.objects.filter(created__day=now_day).count()
+    today_views = Visit.objects.filter(created__gt=now_day).count()
     return all_views, today_views
 
 

@@ -194,6 +194,8 @@ h3 {
 
 .value-value {
     float: right;
+    white-space: nowrap;
+    text-overflow: ellipsis;
 }
 
 .list-item {

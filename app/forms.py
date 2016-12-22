@@ -1,4 +1,4 @@
-""" Definition of forms. """
+""" Формы для POST методов """
 
 from django import forms
 from django.contrib.auth.forms import AuthenticationForm
@@ -7,24 +7,25 @@ from django.utils.translation import ugettext_lazy as _
 
 
 class BootstrapAuthenticationForm(AuthenticationForm):
-    """Authentication form which uses bootstrap CSS."""
+    """ Форма с бутстрапом """
     username = forms.CharField(
         max_length=20,
         widget=forms.TextInput({
             'class': 'form-control',
-            'placeholder': 'Логин'
+            'placeholder': 'Логин',
         })
     )
     password = forms.CharField(
         label=_("Password"),
         widget=forms.PasswordInput({
             'class': 'form-control',
-            'placeholder': 'Пасворд'
+            'placeholder': 'Пасворд',
         })
     )
 
 
 class ContactForm(forms.Form):
+    """ Форма обратной связи """
     your_name = forms.CharField(
         max_length=20,
         widget=forms.TextInput(attrs={
@@ -51,7 +52,8 @@ class ContactForm(forms.Form):
     )
 
 
-def register_form(post):
+def register_from_request(post):
+    """ Зарегестрировать по {{ post }} запросу """
     if post['password1'] == post['password2']:
         try:
             User.objects.get(username__iexact=post['username'])

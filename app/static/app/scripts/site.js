@@ -30,6 +30,10 @@ $(document).ready(function () {
         .tiDelete(10)
         .tiType('скромный сайт.');
     }
+    new List('test-list', {
+        valueNames: ['filter-value'],
+        plugins: [ ListFuzzySearch() ]
+    });
 });
 
 

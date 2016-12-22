@@ -187,9 +187,33 @@ h3 {
     text-decoration: none;
 }
 
+.value-name {
+    color: #1e789f;
+    margin-right: 10px;
+}
+
+.value-value {
+    float: right;
+}
+
+.list-item {
+    list-style: none;
+}
+
+.list {
+    padding: 0;
+}
+
+.margin-bot-top {
+    margin: 20px 0;
+    background: #1b1b1b;
+}
+
 .shadowed { box-shadow: 0 0 10px rgba(0, 0, 0, .8) }
 
 .bord { border: #2cc3fd solid 1px }
+
+.light-bord { border: #124961 solid 1px }
 
 .bord-2 { border: #2a9fd6 solid 2px }
 

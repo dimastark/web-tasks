@@ -10,8 +10,8 @@ from app.views import home, comments, contact, images, register, visits, visits_
 
 admin.autodiscover()
 urlpatterns = [
-    url(r'^$', home, name='home'),
     url(r'^home$', home, name='home'),
+    url(r'^$', home, name='home'),
     url(r'^contact$', contact, name='contact'),
     url(r'^comments$', comments, name='comments'),
     url(r'^list$', visits_list, name='visits'),

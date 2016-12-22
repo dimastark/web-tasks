@@ -19,6 +19,10 @@ BASE_PATH = os.path.dirname(__file__)
 FONT_PATH = os.path.join(BASE_PATH, 'static', 'app', 'fonts', 'Hack-Bold.ttf')
 
 
+def dict2namedtuple(dictionary):
+    return namedtuple('GenericDict', dictionary.keys())(**dictionary)
+
+
 def get_last_visit(page, user_ip):
     try:
         return Visit.objects.filter(ip=user_ip, page=page).order_by('-id')[1].created
@@ -109,6 +113,17 @@ def make_visit(request: HttpRequest, page):
         user_agent=request.META.get('HTTP_USER_AGENT', ''),
         resolution='',
         method=request.method,
-        is_view=not visited
+        is_view=not visited,
+        browser_family=request.user_agent.browser.family,
+        browser_version=request.user_agent.browser.version_string,
+        device=request.user_agent.device.family,
+        os=request.user_agent.os.family
     )
     request.session['visited'] = True
+
+
+def get_visit_tuples():
+    return [
+        dict2namedtuple(dct) for dct in
+        Visit.objects.all().order_by('-created').values()
+    ]

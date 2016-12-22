@@ -1,5 +1,49 @@
 {% extends "layout.html" %}
 
 {% block content %}
-
+    <div id="test-list">
+    <input type="text" class="fuzzy-search form-control" placeholder="Фильтрация по IP" />
+    <ul class="list">
+        {% for visit in visits %}
+        <li class="margin-bot-top light-bord row list-item">
+            <div class="col-md-3">
+                <span class="value-name">Time:</span>
+                <span class="value-value">{{ visit.created|date:'Y-m-d H:i' }}</span>
+            </div>
+            <div class="col-md-3">
+                <span class="value-name">IP:</span>
+                <span class="filter-value value-value">{{ visit.ip }}</span>
+            </div>
+            <div class="col-md-3">
+                <span class="value-name">Method:</span>
+                <span class="value-value">{{ visit.method }}</span>
+            </div>
+            <div class="col-md-3">
+                <span class="value-name">Page:</span>
+                <span class="value-value">{{ visit.page }}</span>
+            </div>
+            <div class="col-md-3">
+                <span class="value-name">OS:</span>
+                <span class="value-value">{{ visit.os }}</span>
+            </div>
+            <div class="col-md-3">
+                <span class="value-name">Device:</span>
+                <span class="value-value">{{ visit.device }}</span>
+            </div>
+            <div class="col-md-3">
+                <span class="value-name">Browser:</span>
+                <span class="value-value">{{ visit.browser_family }}</span>
+            </div>
+            <div class="col-md-3">
+                <span class="value-name">Version:</span>
+                <span class="value-value">{{ visit.browser_version }}</span>
+            </div>
+            <div class="col-xs-12">
+                <span class="value-name">User Agent:</span>
+                <span class="value-value">{{ visit.user_agent }}</span>
+            </div>
+        </li>
+    {% endfor %}
+    </ul>
+    </div>
 {% endblock %}

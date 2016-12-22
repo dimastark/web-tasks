@@ -6,8 +6,8 @@ from django.shortcuts import render, redirect
 from django.http import HttpRequest
 from datetime import datetime
 
-from app.forms import ContactForm, BootstrapAuthenticationForm, register_form
-from app.utils import create_image, send_me_message, make_visit, get_counter_image, get_client_ip
+from app.forms import ContactForm, BootstrapAuthenticationForm, register_from_request
+from app.utils import create_image, send_me_message, make_visit, get_counter_image, get_client_ip, get_visit_tuples
 
 
 def home(request):
@@ -56,14 +56,13 @@ def register(request):
     assert isinstance(request, HttpRequest)
     make_visit(request, '/register')
     if request.method == 'POST':
-        form = register_form(request.POST)
+        form = register_from_request(request.POST)
         if form:
             name, password = form
             User.objects.create_user(
                 username=name,
                 password=password,
             )
-            return redirect('thanks/')
         else:
             return render(request, 'login.html', {
                 'form': BootstrapAuthenticationForm,
@@ -99,11 +98,11 @@ def visits_list(request):
     """Renders the comments page."""
     assert isinstance(request, HttpRequest)
     make_visit(request, '/list')
-    return render(request, 'notfound.html', {
+    tpls = get_visit_tuples()
+    return render(request, 'visits.html', {
             'name': 'list',
-            'title': 'Комменты и отзывы',
-            'message': '404',
-            'additional': 'Тут можно будет писать гневные комментарии',
+            'title': 'Посещения',
+            'visits': tpls,
             'year': datetime.now().year,
         }
     )

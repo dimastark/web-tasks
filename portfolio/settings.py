@@ -89,6 +89,7 @@ CACHES = {
 
 COMPRESS_ENABLED = True
 COMPRESS_OFFLINE_CONTEXT = True
+COMPRESS_STORAGE = 'compressor.storage.GzipCompressorFileStorage'
 COMPRESS_CSS_FILTERS = [
     'compressor.filters.css_default.CssAbsoluteFilter',
     'compressor.filters.yuglify.YUglifyCSSFilter',

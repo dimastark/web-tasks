@@ -61,7 +61,6 @@ DATABASES = {
 MIDDLEWARE_CLASSES = (
     'django.middleware.common.CommonMiddleware',
     'django.contrib.sessions.middleware.SessionMiddleware',
-    'django.middleware.gzip.GZipMiddleware',
     'django.middleware.csrf.CsrfViewMiddleware',
     'django.contrib.auth.middleware.AuthenticationMiddleware',
     'django.middleware.clickjacking.XFrameOptionsMiddleware',
@@ -74,7 +73,6 @@ INSTALLED_APPS = (
     'django.contrib.sessions',
     'django.contrib.sites',
     'django.contrib.staticfiles',
-    'compressor',
     'app',
     'django.contrib.admin',
     'django_user_agents',
@@ -87,11 +85,3 @@ CACHES = {
         'LOCATION': 'unix:/tmp/memcached.sock',
     }
 }
-
-COMPRESS_ENABLED = True
-COMPRESS_OFFLINE_CONTEXT = True
-COMPRESS_STORAGE = 'compressor.storage.GzipCompressorFileStorage'
-COMPRESS_CSS_FILTERS = [
-    'compressor.filters.css_default.CssAbsoluteFilter',
-    'compressor.filters.yuglify.YUglifyCSSFilter',
-]

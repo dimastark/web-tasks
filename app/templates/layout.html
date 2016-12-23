@@ -7,6 +7,8 @@
     {% load compress %}
     {% load staticfiles %}
     <link rel="shortcut icon" href="{% static 'app/images/favicon.ico' %}" />
+</head>
+<body onkeydown="onKeyDown(event)" onload="onLoadBody()">
     {% compress css %}
     <link rel="stylesheet" type="text/css" href="{% static 'app/external_css/bootstrap.min.css' %}" />
     <link rel="stylesheet" type="text/css" href="{% static 'app/css/site.css' %}" />
@@ -18,8 +20,6 @@
     <link rel="stylesheet" type="text/css" href="{% static 'app/css/navibar.css' %}" />
     <link rel="stylesheet" type="text/css" href="{% static 'app/css/login.css' %}" />
     {% endcompress %}
-</head>
-<body onkeydown="onKeyDown(event)" onload="onLoadBody()">
     <div class="wrapper">
         <div id="left"></div>
         <div id="right"></div>

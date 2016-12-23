@@ -4,8 +4,10 @@
     <meta charset="utf-8" />
     <meta name="viewport" content="width=device-width, initial-scale=1.0">
     <title>{{ title }}</title>
+    {% load compress %}
     {% load staticfiles %}
     <link rel="shortcut icon" href="{% static 'app/images/favicon.ico' %}" />
+    {% compress css %}
     <link rel="stylesheet" type="text/css" href="{% static 'app/external_css/bootstrap.min.css' %}" />
     <link rel="stylesheet" type="text/css" href="{% static 'app/css/site.css' %}" />
     <link rel="stylesheet" type="text/css" href="{% static 'app/css/contact_form.css' %}" />
@@ -15,6 +17,7 @@
     <link rel="stylesheet" type="text/css" href="{% static 'app/css/effects.css' %}" />
     <link rel="stylesheet" type="text/css" href="{% static 'app/css/navibar.css' %}" />
     <link rel="stylesheet" type="text/css" href="{% static 'app/css/login.css' %}" />
+    {% endcompress %}
 </head>
 <body onkeydown="onKeyDown(event)" onload="onLoadBody()">
     <div class="wrapper">
@@ -72,11 +75,13 @@
         </div>
     </div>
     <script defer src="//ajax.googleapis.com/ajax/libs/jquery/2.0.0/jquery.min.js"></script>
-    <script async src="{% static 'app/external_scripts/bootstrap.js' %}"></script>
-    <script defer src="{% static 'app/external_scripts/typeit.min.js' %}"></script>
     <script async src="http://listjs.com/assets/javascripts/list.min.js"></script>
     <script async src="https://cdnjs.cloudflare.com/ajax/libs/list.fuzzysearch.js/0.1.0/list.fuzzysearch.js"></script>
+    {% compress js %}
+    <script async src="{% static 'app/external_scripts/bootstrap.js' %}"></script>
+    <script defer src="{% static 'app/external_scripts/typeit.min.js' %}"></script>
     <script defer src="{% static 'app/scripts/site.js' %}"></script>
+    {% endcompress %}
     {% block scripts %}{% endblock %}
 </body>
 </html>

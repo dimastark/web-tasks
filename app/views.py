@@ -1,45 +1,74 @@
-""" Definition of views. """
-from multiprocessing import Process
+""" Вьюхи """
 from django.contrib.auth.models import User
 from django.http import HttpResponse
-from django.shortcuts import render, redirect
+from django.shortcuts import render
 from django.http import HttpRequest
 from datetime import datetime
 
 from app.forms import ContactForm, BootstrapAuthenticationForm, register_from_request
-from app.utils import create_image, send_me_message, make_visit, get_counter_image, get_client_ip, get_visit_tuples
+from app.models import Visit
+from app.utils import get_client_ip, create_image, send_mail_in_process
+from app.gen_image import get_counter_image
 
 
-def home(request):
-    """Renders the home page."""
-    assert isinstance(request, HttpRequest)
-    make_visit(request, '/home')
+def home(request: HttpRequest):
+    """ Домашняя """
+    Visit.make(request, '/home')
     return render(request, 'index.html', {
-            'name': 'home',
-            'title': 'Домашняя',
+        'name': 'home',
+        'title': 'Домашняя',
+        'year': datetime.now().year,
+    })
+
+
+def images(request: HttpRequest):
+    """ Картиночки """
+    Visit.make(request, '/images')
+    images_list = [
+        'me', 'antigravity', 'dont',
+        'brainbreak', 'cat', 'todo',
+        'compiling', 'catwizz', 'catwar',
+        'gods', 'duck', 'python', 'team'
+    ]
+    return render(request, 'gallery.html', {
+        'name': 'images',
+        'title': 'Картиночки',
+        'year': datetime.now().year,
+        'images': [
+            create_image(image, i)
+            for i, image in enumerate(images_list)
+        ],
+        'wallpapers': [
+            create_image('wall1', 'wall1'),
+            create_image('wall3', 'wall3'),
+            create_image('wall4', 'wall4'),
+        ]
+    })
+
+
+def comments(request: HttpRequest):
+    """ Отзывы """
+    assert isinstance(request, HttpRequest)
+    Visit.make(request, '/comments')
+    return render(request, 'notfound.html', {
+            'name': 'comments',
+            'title': 'Комменты и отзывы',
+            'message': '404',
+            'additional': 'Тут можно будет писать гневные комментарии',
             'year': datetime.now().year,
         }
     )
 
 
-def contact(request):
-    """Renders the contact page."""
-    assert isinstance(request, HttpRequest)
-    make_visit(request, '/contact')
-    btn_class = 'btn-primary'
-    btn_text = 'Отправить'
+def contact(request: HttpRequest):
+    """ Связаться со мной """
+    Visit.make(request, '/contact')
+    btn_class, btn_text = 'btn-primary', 'Отправить'
     if request.method == 'POST':
         form = ContactForm(request.POST)
         if form.is_valid():
-            data = form.cleaned_data
-            proc = Process(
-                target=send_me_message,
-                args=(data['message'], data['your_email'], data['your_name'])
-            )
-            proc.daemon = True
-            proc.start()
-            btn_class = 'btn-success'
-            btn_text = 'Спасибо!'
+            send_mail_in_process(form.cleaned_data)
+            btn_class, btn_text = 'btn-success', 'Спасибо!'
     return render(request, 'contact.html', {
         'name': 'contact',
         'button_class': btn_class,
@@ -51,10 +80,10 @@ def contact(request):
     })
 
 
-def register(request):
-    """Renders the contact page."""
-    assert isinstance(request, HttpRequest)
-    make_visit(request, '/register')
+def register(request: HttpRequest):
+    """ Регистрация """
+    Visit.make(request, '/register')
+    error = None
     if request.method == 'POST':
         form = register_from_request(request.POST)
         if form:
@@ -64,84 +93,34 @@ def register(request):
                 password=password,
             )
         else:
-            return render(request, 'login.html', {
-                'form': BootstrapAuthenticationForm,
-                'name': 'login',
-                'title': 'Вход',
-                'year': datetime.now().year,
-                'error': 'Либо пароли не совпали, либо логин занят'
-            })
+            error = 'Либо пароли не совпали, либо логин занят'
     return render(request, 'login.html', {
         'form': BootstrapAuthenticationForm,
         'name': 'login',
         'title': 'Вход',
         'year': datetime.now().year,
-        'error': None,
+        'error': error,
     })
 
 
-def comments(request):
-    """Renders the comments page."""
-    assert isinstance(request, HttpRequest)
-    make_visit(request, '/comments')
-    return render(request, 'notfound.html', {
-            'name': 'comments',
-            'title': 'Комменты и отзывы',
-            'message': '404',
-            'additional': 'Тут можно будет писать гневные комментарии',
-            'year': datetime.now().year,
-        }
-    )
-
-
-def visits_list(request):
-    """Renders the comments page."""
-    assert isinstance(request, HttpRequest)
-    make_visit(request, '/list')
-    tpls = get_visit_tuples()
+def visits_list(request: HttpRequest):
+    """ Список посещений """
+    Visit.make(request, '/list')
     return render(request, 'visits.html', {
-            'name': 'list',
-            'title': 'Посещения',
-            'visits': tpls,
-            'year': datetime.now().year,
-        }
-    )
+        'name': 'list',
+        'title': 'Посещения',
+        'visits': Visit.visit_tuples,
+        'year': datetime.now().year,
+    })
 
 
-def images(request):
-    """Renders the images page."""
-    assert isinstance(request, HttpRequest)
-    make_visit(request, '/images')
-    images_lst = [
-        'me', 'antigravity', 'dont',
-        'brainbreak', 'cat', 'todo',
-        'compiling', 'catwizz', 'catwar',
-        'gods', 'duck', 'python',
-        'dont', 'team'
-    ]
-    return render(request, 'gallery.html', {
-            'name': 'images',
-            'title': 'Картиночки',
-            'year': datetime.now().year,
-            'images': [
-                create_image(image, i)
-                for i, image in enumerate(images_lst)
-            ],
-            'wallpapers': [
-                create_image('wall1', 'wall1'),
-                create_image('wall3', 'wall3'),
-                create_image('wall4', 'wall4'),
-            ]
-        }
-    )
-
-
-def visits(request):
-    """Renders the images page."""
-    assert isinstance(request, HttpRequest)
-    make_visit(request, '/visits')
-    bts = get_counter_image(request.GET.get('path'), get_client_ip(request)).read()
-    response = HttpResponse(content=bts)
+def visits(request: HttpRequest):
+    """ Картинка про посещения """
+    Visit.make(request, '/visits')
+    response = HttpResponse(content=get_counter_image(
+        request.GET.get('path'),
+        get_client_ip(request),
+    ).read())
     response['Content-Type'] = 'image/png'
     response['Content-Disposition'] = 'attachment;filename=counter.png'
     return response

@@ -2,26 +2,22 @@
     font-family: "Anonymous Pro";
     src: url("../fonts/AnonymousPro.eot");
     src: url("../fonts/AnonymousPro.eot?#iefix") format("embedded-opentype"),
-    url("../fonts/AnonymousPro.woff") format("woff"),
-    url("../fonts/AnonymousPro.ttf") format("truetype");
+         url("../fonts/AnonymousPro.woff") format("woff"),
+         url("../fonts/AnonymousPro.ttf") format("truetype");
     font-style: normal;
     font-weight: normal;
 }
 
-body {
-    background-color: #000;
-}
-
 html, body {
-    background-size: cover;
+    font-family: "Anonymous Pro", sans-serif;
     -webkit-background-size: cover;
     -moz-background-size: cover;
     -o-background-size: cover;
+    background-size: cover;
+    background-color: #000;
     color: #888;
     height: 100%;
     width: 100%;
-    font-family: "Anonymous Pro", sans-serif;
-
 }
 
 h1, h2, h3, h4, h5, h6 {
@@ -33,11 +29,6 @@ h3 {
     font-size: 40px;
     font-weight: 500;
     line-height: 1;
-}
-
-.container {
-    padding-left: 10px;
-    padding-right: 10px;
 }
 
 .bg img {
@@ -87,11 +78,6 @@ h3 {
 .my-photo {
     max-height: 70vh;
     max-width: 100%;
-}
-
-.mail-div {
-    margin-left: 0;
-    margin-right: 0;
 }
 
 .bg {
@@ -155,42 +141,10 @@ h3 {
     position: relative;
 }
 
-.visits h1, h4 {
-    color: #000;
-}
-
-.visits p {
-    text-align: left;
-}
-
-.copyright:hover ~ .visits, .visits:hover {
-    display: block;
-}
-
-.copyright:hover {
-    text-decoration: underline;
-}
-
-.visits-link > img {
-    opacity: .8;
-}
-
-.visits-link:hover > img {
-    opacity: 1;
-}
-
 .copyright {
     position: relative;
     text-align: center;
     z-index: 9;
-}
-
-.validators {
-    width: 100%;
-}
-
-.validators a {
-    text-decoration: none;
 }
 
 .value-name {
@@ -198,22 +152,36 @@ h3 {
     margin-right: 10px;
 }
 
-.value-value {
-    float: right;
-}
-
-.list-item {
-    list-style: none;
-}
-
-.list {
-    padding: 0;
-}
-
 .margin-bot-top {
     margin: 20px 0;
     background: #1b1b1b;
 }
+
+.visits h1, h4 { color: #000 }
+
+.visits p { text-align: left }
+
+.copyright:hover ~ .visits, .visits:hover { display: block }
+
+.copyright:hover { text-decoration: underline }
+
+.visits-link > img { opacity: .8 }
+
+.visits-link:hover > img { opacity: 1 }
+
+.validators { width: 100% }
+
+.validators a { text-decoration: none }
+
+.value-value { float: right }
+
+.list-item { list-style: none }
+
+.list { padding: 0 }
+
+.mail-div { margin: 0 }
+
+.container { padding: 0 10px }
 
 .shadowed { box-shadow: 0 0 10px rgba(0, 0, 0, .8) }
 
@@ -238,6 +206,18 @@ h3 {
 .thumb { margin-bottom: 30px }
 
 .js { display: none }
+
+.field-validation-error { color: #b94a48 }
+
+.field-validation-valid { display: none }
+
+input.input-validation-error { border: 1px solid #b94a48 }
+
+input[type="checkbox"].input-validation-error { border: 0 none }
+
+.validation-summary-errors { color: #b94a48 }
+
+.validation-summary-valid { display: none }
 
 @media (min-width: 992px) { .column { min-height: 560px } }
 

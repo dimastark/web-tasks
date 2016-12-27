@@ -9,9 +9,7 @@
     transition: color .5s ease;
 }
 
-.navbar-nav > :last-child > a {
-    border-right: #2cc3fd solid 2px;
-}
+.navbar-nav > :last-child > a { border-right: #2cc3fd solid 2px }
 
 .navbar-brand {
     color: #2a9fd6;
@@ -27,9 +25,7 @@
     background-color: #222222;
 }
 
-.navbar-toggle {
-    background: #000;
-}
+.navbar-toggle { background: #000 }
 
 .navbar-nav > .active > a,
 .navbar-nav > .active > a:hover,

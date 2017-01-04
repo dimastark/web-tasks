@@ -5,7 +5,7 @@ from django.contrib import admin
 from django.conf.urls import url, include
 from django.contrib.auth.views import login, logout
 
-from app.forms import BootstrapAuthenticationForm
+from app.forms import BootstrapAuthenticationForm, RegistrationForm
 from app.views import (
     home, images, comments, contact,
     visits, visits_list, register,
@@ -31,6 +31,7 @@ urlpatterns = [
         'extra_context': {
             'name': 'login',
             'title': 'Вход',
+            'registration_form': RegistrationForm,
             'year': datetime.now().year,
         }
     }, name='login'),

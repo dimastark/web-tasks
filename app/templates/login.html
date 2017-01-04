@@ -1,4 +1,9 @@
 {% extends "layout.html" %}
+{% load staticfiles %}
+
+{% block references %}
+    <link rel="stylesheet" type="text/css" href="{% static 'app/css/login.css' %}" />
+{% endblock %}
 
 {% block content %}
 
@@ -6,7 +11,7 @@
         <div class="login-wrap">
             <input type="radio" name="reg-or-log" id="is-register" class="reg-checkbox" {% if error %}checked{% endif %}>
             <input type="radio" name="reg-or-log" id="is-login" class="login-checkbox">
-            <div class="col-xs-10 col-md-8 col-lg-6 tile bord login-tile">
+            <div class="col-xs-10 col-md-8 col-lg-6 tile border login-tile">
                 <h2>{{ title }}</h2>
                 <form action="/login/" method="post" class="form-horizontal">
                     {% csrf_token %}
@@ -34,7 +39,7 @@
                 </form>
                 <label for="is-register" class="reg-label">Ещё не зарегались?</label>
             </div>
-            <div class="col-xs-10 col-md-8 col-lg-6 tile bord register-tile">
+            <div class="col-xs-10 col-md-8 col-lg-6 tile border register-tile">
                 <h2>Регистрация</h2>
                 <form action="/register/" method="post" class="form-horizontal">
                     <hr />
@@ -42,22 +47,19 @@
                     <div class="form-group">
                         <label for="id_nick" class="col-xs-2 control-label">Логин</label>
                         <div class="col-xs-10">
-                            <input class="form-control" id="id_nick"
-                                   maxlength="20" name="username" placeholder="Логин" type="text" required>
+                            {{ registration_form.username }}
                         </div>
                     </div>
                     <div class="form-group">
                         <label for="id_pass_1" class="col-xs-2 control-label">Пароль</label>
                         <div class="col-xs-10">
-                            <input class="form-control" id="id_pass_1"
-                                   name="password1" placeholder="Пароль" type="password" required>
+                            {{ registration_form.password1 }}
                         </div>
                     </div>
                     <div class="form-group">
                         <label for="id_pass_2" class="col-xs-2 control-label">Пароль</label>
                         <div class="col-xs-10">
-                            <input class="form-control" id="id_pass_2"
-                                   name="password2" placeholder="Пароль(1)" type="password" required>
+                            {{ registration_form.password2 }}
                         </div>
                     </div>
                     <div class="form-group">

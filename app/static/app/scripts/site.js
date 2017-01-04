@@ -63,17 +63,37 @@ function onLoadBody() {
     if (wallpaperCookie) {
         setWallpaper(wallpaperCookie);
     }
-    var onhelp = function (event) {
-        event.preventDefault();
-        document.getElementById('cross').click();
-        event.returnValue = false;
-        event.keyCode = 0;
-        event.preventDefault();
-        event.stopPropagation();
-        return false;
-    };
-    document.onhelp = onhelp;
-    window.onhelp = onhelp;
+    if (window.document.addEventListener) {
+        window.document.addEventListener("keydown", avoidInvalidKeyStorkes, false);
+    } else {
+        window.document.attachEvent("onkeydown", avoidInvalidKeyStorkes);
+        document.captureEvents(Event.KEYDOWN);
+    }
+}
+
+
+function avoidInvalidKeyStorkes(evtArg) {
+    var evt = (document.all ? window.event : evtArg);
+    var isIE = !!document.all;
+    var KEYCODE = (document.all ? window.event.keyCode : evtArg.which);
+
+    if (KEYCODE == "112") {
+        if (isIE) {
+            document.onhelp = function() {
+                return (false);
+            };
+            window.onhelp = function() {
+                return (false);
+            };
+        }
+        evt.returnValue = false;
+        evt.keyCode = 0;
+        evt.preventDefault();
+        evt.stopPropagation();
+        location.hash = '#help';
+    }
+
+    window.status = "Done";
 }
 
 
@@ -106,5 +126,10 @@ function setWallpaper(name) {
         return;
     }
     var style = "url('/static/app/gallery/" + name + ".png') ";
-    document.body.style.background = style + 'repeat fixed center center';
+    document.body.style.background = style + 'no-repeat center center fixed';
+}
+
+function setResponse(next) {
+    document.getElementById('response').value = next;
+    document.getElementById('response_form').scrollIntoView(true);
 }

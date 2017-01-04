@@ -6,14 +6,9 @@
     <title>{{ title }}</title>
     {% load staticfiles %}
     <link rel="shortcut icon" href="{% static 'app/images/favicon.ico' %}" />
-    <link rel="stylesheet" type="text/css" href="{% static 'app/external_css/bootstrap.min.css' %}" />
-    <link rel="stylesheet" type="text/css" href="{% static 'app/css/site.css' %}" />
-    <link rel="stylesheet" type="text/css" href="{% static 'app/css/progress.css' %}" />
-    <link rel="stylesheet" type="text/css" href="{% static 'app/css/contact_form.css' %}" />
-    <link rel="stylesheet" type="text/css" href="{% static 'app/css/gallery.css' %}" />
-    <link rel="stylesheet" type="text/css" href="{% static 'app/css/effects.css' %}" />
-    <link rel="stylesheet" type="text/css" href="{% static 'app/css/navibar.css' %}" />
-    <link rel="stylesheet" type="text/css" href="{% static 'app/css/login.css' %}" />
+    <link rel="stylesheet" type="text/css" href="{% static 'app/external_css/b.min.css' %}" />
+    <link rel="stylesheet" type="text/css" href="{% static 'app/css/layout.css' %}" />
+    {% block references %}{% endblock %}
 </head>
 <body onkeydown="onKeyDown(event)" onload="onLoadBody()">
     <div class="wrapper">
@@ -41,7 +36,7 @@
                             <a href="{% url 'contact' %}">Контакты</a>
                         </li>
                     </ul>
-                    {% include 'loginpartial.html' %}
+                    {% include 'parts/loginpartial.html' %}
                 </div>
             </div>
         </div>

@@ -1,27 +1,23 @@
 {% extends "layout.html" %}
 {% load staticfiles %}
 
-{% block content %}
+{% block references %}
+    <link rel="stylesheet" type="text/css" href="{% static 'app/css/index.css' %}" />
+{% endblock %}
 
-    <div class="section bord row">
+{% block content %}
+    <section class="border">
         <div class="col-md-12 typewriter welcome">
             {% if user.is_authenticated %}
-            <div class="username row">
-                {{ user.username }}
-            </div>
+                <div class="username row">
+                    {{ user.username }}
+                </div>
             {% endif %}
             <p class="welcome-text" id="typer"></p>
+            <noscript class="welcome-text">Добро пожаловать на мой скромный сайт.</noscript>
         </div>
-        <div class="col-md-12 alt welcome">
-            {% if user.is_authenticated %}
-            <div class="username row">
-                {{ user.username }}
-            </div>
-            {% endif %}
-            <p class="welcome-text">Добро пожаловать на мой скромный сайт.</p>
-        </div>
-    </div>
-    <div class="section bord row">
+    </section>
+    <section class="border">
         <div class="col-md-6 my-div">
             <div class="row">
                 <img class="my-photo" alt="Это я" src="{% static 'app/images/me.png' %}">
@@ -33,19 +29,18 @@
                 и я почти "full-stack" разработчик &#128516;
             </p>
         </div>
-    </div>
-    <div class="section bord row">
+    </section>
+    <section class="border">
         <div class="col-md-6 col-xs-12">
             <p class="sect-text">
                 Так же я студент <a href="https://vk.com/math_mech">МатМеха</a>
             </p>
         </div>
-    </div>
-    <div class="section bord row">
+    </section>
+    <section class="border">
         <div class="col-xs-8 center-block">
             <p class="sect-text">Что я могу?</p>
-            {% include 'skills.html' %}
+            {% include 'parts/skills.html' %}
         </div>
-    </div>
-
+    </section>
 {% endblock %}

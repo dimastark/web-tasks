@@ -5,8 +5,8 @@ from django.shortcuts import render
 from django.http import HttpRequest
 from datetime import datetime
 
-from app.forms import ContactForm, BootstrapAuthenticationForm, register_from_request
-from app.models import Visit
+from app.forms import ContactForm, BootstrapAuthenticationForm, RegistrationForm, CommentForm
+from app.models import Visit, Comment
 from app.utils import get_client_ip, create_image, send_mail_in_process
 from app.gen_image import get_counter_image
 
@@ -48,16 +48,19 @@ def images(request: HttpRequest):
 
 def comments(request: HttpRequest):
     """ Отзывы """
-    assert isinstance(request, HttpRequest)
     Visit.make(request, '/comments')
-    return render(request, 'notfound.html', {
-            'name': 'comments',
-            'title': 'Комменты и отзывы',
-            'message': '404',
-            'additional': 'Тут можно будет писать гневные комментарии',
-            'year': datetime.now().year,
-        }
-    )
+    if request.method == 'POST':
+        form = CommentForm(request.POST)
+        if form.is_valid():
+            Comment.make(request, form)
+    return render(request, 'comments.html', {
+        'name': 'comments',
+        'title': 'Отзывы',
+        'form': CommentForm,
+        'last': Comment.last_order,
+        'comments': list(zip(Comment.next_tuples(), Comment.comment_tuples())),
+        'year': datetime.now().year,
+    })
 
 
 def contact(request: HttpRequest):
@@ -85,21 +88,23 @@ def register(request: HttpRequest):
     Visit.make(request, '/register')
     error = None
     if request.method == 'POST':
-        form = register_from_request(request.POST)
-        if form:
-            name, password = form
+        form = RegistrationForm(request.POST)
+        if form.is_valid():
+            name = form.cleaned_data['username']
+            password = form.cleaned_data['password1']
             User.objects.create_user(
                 username=name,
                 password=password,
             )
         else:
-            error = 'Либо пароли не совпали, либо логин занят'
+            error = form.errors['__all__'][0]
     return render(request, 'login.html', {
+        'registration_form': RegistrationForm,
         'form': BootstrapAuthenticationForm,
         'name': 'login',
         'title': 'Вход',
         'year': datetime.now().year,
-        'error': error,
+        'error': error
     })
 
 

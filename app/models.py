@@ -3,10 +3,11 @@ from datetime import datetime, date
 from collections import namedtuple
 from typing import List
 
-from django.db.models import Model, CharField, BooleanField, DateTimeField
+from django.db.models import Model, CharField, BooleanField, DateTimeField, TextField
 from django.http import HttpRequest
 
-from app.utils import dict2namedtuple, get_client_ip
+from app.forms import CommentForm
+from app.utils import dict2namedtuple, get_client_ip, get_next_order
 
 
 class Visit(Model):
@@ -24,10 +25,8 @@ class Visit(Model):
 
     @staticmethod
     def visit_tuples() -> List[namedtuple]:
-        return [
-            dict2namedtuple(dct)
-            for dct in Visit.objects.all().order_by('-created').values()
-        ]
+        all_visits = Visit.objects.all().order_by('-created').values()
+        return [dict2namedtuple(dct) for dct in all_visits]
 
     @staticmethod
     def all_visits_count() -> int:
@@ -35,7 +34,9 @@ class Visit(Model):
 
     @staticmethod
     def today_visits_count() -> int:
-        return Visit.objects.filter(is_view=True, created__gt=date.today()).count()
+        return Visit.objects.filter(
+            is_view=True, created__gt=date.today()
+        ).count()
 
     @staticmethod
     def all_views_count() -> int:
@@ -66,3 +67,58 @@ class Visit(Model):
             device=request.user_agent.device.family,
         )
         request.session['visited'] = True
+
+
+class Comment(Model):
+    username = CharField(max_length=20)
+    message = TextField(max_length=1000)
+    order = TextField(max_length=100)
+    created = DateTimeField(auto_now_add=True)
+
+    @staticmethod
+    def make(request: HttpRequest, form: CommentForm):
+        message = form.cleaned_data['message']
+        username = request.user.get_username() or 'anonymous'
+        order = get_next_order(request.POST['order'])
+        Comment.objects.create(
+            username=username,
+            message=message,
+            order=order
+        )
+
+    @staticmethod
+    def last_order():
+        try:
+            last = Comment.objects.all().order_by('-order')[0].order
+            return last.split('_')[0]
+        except IndexError:
+            return '00000'
+
+    @staticmethod
+    def comment_tuples() -> List[namedtuple]:
+        return [
+            dict2namedtuple(dct)
+            for dct in Comment.objects.all().order_by('order').values()
+        ]
+
+    @staticmethod
+    def get_last_in_dialog(dialog):
+        try:
+            return Comment.objects.filter(
+                order__startswith=dialog
+            ).order_by('order')[1].order[:len(dialog) + 6]
+        except IndexError:
+            return None
+
+    @staticmethod
+    def get_response_order(dialog):
+        last = Comment.get_last_in_dialog(dialog)
+        last = get_next_order(last) if last else last
+        return last or dialog + '_00000'
+
+    @staticmethod
+    def next_tuples():
+        return [
+            Comment.get_response_order(dct['order'])
+            for dct in Comment.objects.all().order_by('order').values()
+        ]

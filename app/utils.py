@@ -51,3 +51,9 @@ def create_image(name: str, image_id: str) -> namedtuple:
         'app/gallery/' + name + '_tn.jpg',
         'image' + str(image_id)
     )
+
+
+def get_next_order(order: str) -> str:
+    parts = order.split('_')
+    parts[-1] = '{0:05d}'.format(int(parts[-1]) + 1)
+    return '_'.join(parts)

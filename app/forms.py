@@ -1,9 +1,7 @@
 """ Формы для POST методов """
-from typing import Optional, Tuple
-
 from django.contrib.auth.models import User
 from django.contrib.auth.forms import AuthenticationForm
-from django.forms import CharField, TextInput, PasswordInput, Form, Textarea
+from django.forms import CharField, TextInput, PasswordInput, Form, Textarea, forms
 
 
 class BootstrapAuthenticationForm(AuthenticationForm):
@@ -52,10 +50,52 @@ class ContactForm(Form):
     )
 
 
-def register_from_request(post) -> Optional[Tuple[str, str]]:
-    """ Зарегестрировать по {{ post }} запросу """
-    if post['password1'] == post['password2']:
+class RegistrationForm(Form):
+    """ Форма регистрации """
+    username = CharField(
+        max_length=20,
+        widget=TextInput({
+            'class': 'form-control',
+            'placeholder': 'Логин',
+        })
+    )
+    password1 = CharField(
+        label="Password",
+        widget=PasswordInput({
+            'class': 'form-control',
+            'placeholder': 'Пасворд1',
+        })
+    )
+    password2 = CharField(
+        label="Repeat",
+        widget=PasswordInput({
+            'class': 'form-control',
+            'placeholder': 'Пасворд2',
+        })
+    )
+
+    def clean(self) -> dict:
+        data = super(RegistrationForm, self).clean()
+        first = data.get('password1')
+        second = data.get('password2')
+        if first != second:
+            raise forms.ValidationError('Пароли не совпадают')
         try:
-            User.objects.get(username__iexact=post['username'])
+            User.objects.get(username__iexact=data['username'])
         except User.DoesNotExist:
-            return post['username'], post['password1']
+            return data
+        else:
+            raise forms.ValidationError('Пользователь уже существует')
+
+
+class CommentForm(Form):
+    """ Комментарий """
+    message = CharField(
+        max_length=1000,
+        widget=Textarea(attrs={
+            'id': 'message',
+            'placeholder': 'Бла бла бла...',
+            'class': 'form-control',
+            'rows': "7",
+        })
+    )

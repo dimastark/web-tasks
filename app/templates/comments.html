@@ -1,5 +1,34 @@
-<div class="visits">
-            <h1>SECRET ZONE</h1>
-            <h4>Поздравляю! Вы нашли штуки)</h4>
-            <p>Вы либо Леонид Сергеевич, либо читали код, либо водите мышкой, где не попадя</p>
+{% extends "layout.html" %}
+{% load static %}
+
+{% block references %}
+    <link rel="stylesheet" type="text/css" href="{% static 'app/css/comments.css' %}" />
+{% endblock %}
+
+{% block content %}
+    {% for next, comment in comments %}
+        <div style="margin-left: calc(4 * ({{ comment.order|length }}px - 5px))"
+             class="margin-bot-top light-bord row comment">
+            <div class="col-md-12 comment-message">
+                <pre class="comment-pre">{{ comment.message }}</pre>
+            </div>
+            <div class="col-md-12">
+                <span class="nickname">{{ comment.username }}</span>
+                <span class="timestamp">{{ comment.created }}</span>
+                <button onclick="setResponse('{{ next }}')" class="response">ответить</button>
+            </div>
         </div>
+    {% endfor %}
+    <form id="response_form" method="post" action="/comments">
+        {% csrf_token %}
+        <div class="col-md-10 controls-div">
+            <div class="form-group">{{ form.message }}</div>
+        </div>
+        <div class="col-md-1"></div>
+        <input id="response" type="hidden" name="order" value="{{ last }}">
+        <button type="submit"
+                id="submit"
+                name="submit"
+                class="btn btn-primary">Отправить</button>
+    </form>
+{% endblock %}

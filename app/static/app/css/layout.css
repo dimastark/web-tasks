@@ -1,4 +1,4 @@
-﻿@font-face {
+@font-face {
     font-family: "Anonymous Pro";
     src: url("../fonts/AnonymousPro.eot");
     src: url("../fonts/AnonymousPro.eot?#iefix") format("embedded-opentype"),
@@ -16,76 +16,32 @@ html, body {
     background-size: cover;
     background-color: #000;
     color: #888;
-    height: 100%;
-    width: 100%;
 }
+
+#top, #bottom, #left, #right {
+	background: #2cc3f0;
+	position: fixed;
+    z-index: 999999999;
+}
+
+#left, #right {
+    top: 0; bottom: 0;
+    width: 2px;
+}
+
+#top, #bottom {
+    left: 0; right: 0;
+	height: 2px;
+}
+
+#left { left: 0 }
+#right { right: 0 }
+#top { top: 0 }
+#bottom { bottom: 0 }
 
 h1, h2, h3, h4, h5, h6 {
     color: #fff;
     font-family: "Anonymous Pro", sans-serif;
-}
-
-h3 {
-    font-size: 40px;
-    font-weight: 500;
-    line-height: 1;
-}
-
-.bg img {
-    z-index: -1;
-    position: absolute;
-    top: 0;
-    left: 0;
-    right: 0;
-    bottom: 0;
-    margin: auto;
-    min-width: 50%;
-    min-height: 50%;
-}
-
-.section {
-    display: flex;
-    background: #1b1b1b;
-    align-items: center;
-    margin: 10px 0;
-    padding: 20px;
-    width: 100%;
-    min-height: 300px;
-    height: 80vh;
-}
-
-.welcome {
-    text-align: center;
-    margin: 0 auto;
-}
-
-.welcome-text {
-    font-size: 5vh;
-    color: white;
-}
-
-.username {
-    font-size: 5vh;
-    color: #2a9fd6;
-}
-
-.sect-text {
-    font-size: 5vh;
-    color: white;
-    text-align: center;
-}
-
-.my-photo {
-    max-height: 70vh;
-    max-width: 100%;
-}
-
-.bg {
-    position: fixed;
-    top: -50%;
-    left: -50%;
-    width: 200%;
-    height: 200%;
 }
 
 .wrapper {
@@ -179,13 +135,14 @@ h3 {
 
 .list { padding: 0 }
 
-.mail-div { margin: 0 }
-
-.container { padding: 0 10px }
+.container {
+    padding: 0 10px;
+    margin-bottom: 10px;
+}
 
 .shadowed { box-shadow: 0 0 10px rgba(0, 0, 0, .8) }
 
-.bord { border: #2cc3fd solid 1px }
+.border { border: #2cc3fd solid 1px }
 
 .light-bord { border: #124961 solid 1px }
 
@@ -207,18 +164,58 @@ h3 {
 
 .js { display: none }
 
-.field-validation-error { color: #b94a48 }
+@media (min-width: 992px) { .column { min-height: 560px } }
 
-.field-validation-valid { display: none }
+@media (max-width: 992px) { .my-div { display: none } }
+
+
+/* Navigation bar */
+
+.navbar-nav > li > a {
+    display: inline-block;
+    background-color: #1b1b1b;
+    border-left: #2cc3fd solid 2px;
+    border-bottom: #2cc3fd solid 2px;
+    transition: color .5s ease;
+    text-align: center;
+    min-width: 100%;
+    color: white;
+}
+
+.navbar-brand {
+    color: #2a9fd6;
+    text-align: center;
+    min-width: 150px;
+    width: 100%;
+}
+
+.nav > li > a:hover,
+.nav > li > a:focus {
+    text-decoration: none;
+    background-color: #222;
+}
+
+.navbar-nav > .active > a,
+.navbar-nav > .active > a:hover,
+.navbar-nav > .active > a:focus {
+    color: #1b1b1b;
+    background: #2cc3fd;
+}
+
+.navbar-toggle { background: #000 }
+
+.navbar-nav > li > a:hover { color: #2cc3fd }
+
+.navbar-nav > :last-child > a { border-right: #2cc3fd solid 2px }
+
+/* Validation */
+
+.field-validation-valid,
+.validation-summary-valid { display: none }
+
+.field-validation-error,
+.validation-summary-errors { color: #b94a48 }
 
 input.input-validation-error { border: 1px solid #b94a48 }
 
 input[type="checkbox"].input-validation-error { border: 0 none }
-
-.validation-summary-errors { color: #b94a48 }
-
-.validation-summary-valid { display: none }
-
-@media (min-width: 992px) { .column { min-height: 560px } }
-
-@media (max-width: 992px) { .my-div { display: none } }

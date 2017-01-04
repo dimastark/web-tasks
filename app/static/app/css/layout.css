@@ -9,6 +9,7 @@
 }
 
 html, body {
+    height: 100vh;
     font-family: "Anonymous Pro", sans-serif;
     -webkit-background-size: cover;
     -moz-background-size: cover;

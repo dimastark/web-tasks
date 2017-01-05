@@ -1,0 +1,14 @@
+.value-name {
+    color: #1e789f;
+    margin-right: 10px;
+}
+
+.visits-link > img { opacity: .8 }
+
+.visits-link:hover > img { opacity: 1 }
+
+.value-value { float: right }
+
+.list-item { list-style: none }
+
+.list { padding: 0 }

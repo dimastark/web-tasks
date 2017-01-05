@@ -19,10 +19,19 @@ section {
     color: white;
 }
 
-.username {
+.username-row {
     font-size: 5vh;
     color: #2a9fd6;
 }
+
+.skills-header {
+    margin: 0 20px;
+    font-size: 5vh;
+    color: white;
+    text-align: center;
+}
+
+.typewriter { text-align: center }
 
 .sect-text {
     font-size: 5vh;

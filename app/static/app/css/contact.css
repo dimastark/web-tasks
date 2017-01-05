@@ -2,7 +2,7 @@
 
 .head {
     text-align: center;
-    margin-bottom: 50px;
+    margin: 50px 0;
 }
 
 .form-area button { width: 100% }
@@ -12,6 +12,22 @@
 .form-area { padding: 10px 40px 10px }
 
 .full-contact { margin-bottom: 20px }
+
+.img-link {
+    margin: auto;
+    cursor: pointer;
+    transition: opacity .5s ease;
+}
+
+.img-par { text-align: center }
+
+.img-link:hover { opacity: 1 }
+
+.img-link { opacity: 1 }
+
+.img-link:hover { opacity: .5 }
+
+.mail { float: right }
 
 @media (max-width: 768px) {
     .controls-div {

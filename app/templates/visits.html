@@ -1,11 +1,16 @@
 {% extends "layout.html" %}
+{% load staticfiles %}
+
+{% block references %}
+    <link rel="stylesheet" type="text/css" href="{% static 'app/css/visits.css' %}" />
+{% endblock %}
 
 {% block content %}
     <div id="test-list">
     <input type="text" class="fuzzy-search form-control" placeholder="Фильтрация по IP" />
     <ul class="list">
         {% for visit in visits %}
-        <li class="margin-bot-top light-bord row list-item">
+        <li class="bottom-top-tile light-border row list-item">
             <div class="col-md-3">
                 <span class="value-name">Time:</span>
                 <span class="value-value">{{ visit.created|date:'Y-m-d H:i' }}</span>

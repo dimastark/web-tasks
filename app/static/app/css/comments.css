@@ -1,3 +1,7 @@
+.comment {
+    min-width: 300px;
+}
+
 .comment-message {
     color: white;
     margin: 10px;
@@ -17,7 +21,6 @@
     border-radius: 15px;
     display: inline-block;
     overflow: hidden;
-    max-width: 100px;
     outline:none;
 }
 
@@ -41,4 +44,18 @@
 
 .comment-pre {
     white-space: pre-wrap;
+    font-family: "Anonymous Pro", sans-serif;
+}
+
+.response-and-timestamp {
+    display: inline-block;
+    white-space: nowrap;
+}
+
+.padded {
+    padding: 30px;
+}
+
+.send-button {
+    width: 100%;
 }

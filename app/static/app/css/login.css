@@ -1,3 +1,7 @@
+body {
+    height: 100%;
+}
+
 .login-wrap {
     top: 0;
     left: 0;
@@ -62,6 +66,8 @@
 .login-checkbox:checked ~ .register-tile {
     animation: fold 1s ease-out forwards;
 }
+
+.form-btn { width: 100% }
 
 @keyframes fold {
     from {

@@ -8,27 +8,32 @@
 {% block content %}
     {% for next, comment in comments %}
         <div style="margin-left: calc(4 * ({{ comment.order|length }}px - 5px))"
-             class="margin-bot-top light-bord row comment">
+             class="bottom-top-tile light-border row comment">
             <div class="col-md-12 comment-message">
                 <pre class="comment-pre">{{ comment.message }}</pre>
             </div>
             <div class="col-md-12">
                 <span class="nickname">{{ comment.username }}</span>
-                <span class="timestamp">{{ comment.created }}</span>
-                <button onclick="setResponse('{{ next }}')" class="response">ответить</button>
+                <div class="response-and-timestamp">
+                    <span class="timestamp">{{ comment.created }}</span>
+                    <button onclick="setResponse('{{ next }}')" class="response">ответить</button>
+                </div>
             </div>
         </div>
     {% endfor %}
-    <form id="response_form" method="post" action="/comments">
+    <form id="response_form" class="bottom-top-tile border" method="post" action="/comments">
         {% csrf_token %}
-        <div class="col-md-10 controls-div">
-            <div class="form-group">{{ form.message }}</div>
+        <div class="row padded">
+            <div class="controls-div col-xs-12 col-md-10">
+                <div class="form-group">{{ form.message }}</div>
+            </div>
+            <div class="col-xs-12 col-md-2">
+                <input id="response" type="hidden" name="order" value="{{ last }}">
+                <button type="submit"
+                        id="submit"
+                        name="submit"
+                        class="btn btn-primary send-button">Отправить</button>
+            </div>
         </div>
-        <div class="col-md-1"></div>
-        <input id="response" type="hidden" name="order" value="{{ last }}">
-        <button type="submit"
-                id="submit"
-                name="submit"
-                class="btn btn-primary">Отправить</button>
     </form>
 {% endblock %}

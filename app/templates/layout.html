@@ -40,18 +40,18 @@
                 </div>
             </div>
         </div>
-        <div class="container body-content">
+        <div class="container">
             {% block content %}{% endblock %}
         </div>
         <div class="push"></div>
     </div>
     <div class="footer">
         <div class="copyright">dimastark &copy; {{ year }}</div>
-        <div class="visits bord-2">
+        <div class="visits-div border-2">
             <a href="/list" class="visits-link">
                 <img src="/visits?path=/{{ name }}" alt="Статистика посещений" style="margin-bottom: 2px;">
             </a>
-            <div class="validators">
+            <div class="validators-refs">
                 <a href="http://jigsaw.w3.org/css-validator/check/referer">
                     <img style="border:0;width:88px;height:31px"
                          src="{% static 'app/images/vcss-blue-css.gif' %}"

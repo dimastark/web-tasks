@@ -9,7 +9,7 @@
     <section class="border">
         <div class="col-md-12 typewriter welcome">
             {% if user.is_authenticated %}
-                <div class="username row">
+                <div class="username-row row">
                     {{ user.username }}
                 </div>
             {% endif %}
@@ -39,7 +39,7 @@
     </section>
     <section class="border">
         <div class="col-xs-8 center-block">
-            <p class="sect-text">Что я могу?</p>
+            <p class="skills-header">Что я могу?</p>
             {% include 'parts/skills.html' %}
         </div>
     </section>

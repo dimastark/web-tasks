@@ -52,7 +52,7 @@ class ContactForm(Form):
 
 class RegistrationForm(Form):
     """ Форма регистрации """
-    username = CharField(
+    nickname = CharField(
         max_length=20,
         widget=TextInput({
             'class': 'form-control',
@@ -81,7 +81,7 @@ class RegistrationForm(Form):
         if first != second:
             raise forms.ValidationError('Пароли не совпадают')
         try:
-            User.objects.get(username__iexact=data['username'])
+            User.objects.get(username__iexact=data['nickname'])
         except User.DoesNotExist:
             return data
         else:

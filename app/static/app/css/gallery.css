@@ -7,6 +7,7 @@
 .images-header-block { margin: 10px 30px 40px }
 
 .thumbnail {
+    height: 256px;
     box-shadow: 0 0 15px rgba(0, 0, 0, .8);
     border: 1px solid #282828;
 }
@@ -141,6 +142,8 @@
 #hide-walls:checked ~ .hideable-block {
     display: block;
 }
+
+@media (max-width: 640px) { .thumbnail { height: 40% } }
 
 @keyframes fade {
     from {

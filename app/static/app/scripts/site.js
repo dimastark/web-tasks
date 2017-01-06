@@ -213,7 +213,7 @@ function updateComments() {
         data : { last_update: Date.now() - 5000 },
 
         success : function(json) {
-            json.comments.forEach(appendComment);
+            json.comments.slice(1).forEach(appendComment);
         },
 
         error : function(xhr,errmsg,err) {

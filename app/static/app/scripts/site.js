@@ -194,7 +194,8 @@ function create_post() {
 
         success : function(json) {
             $('#message').val('');
-            updateComments()
+            appendComment(json);
+            LAST_UPDATE = Date.now();
         },
 
         error : function(xhr,errmsg,err) {
@@ -208,7 +209,6 @@ function create_post() {
 }
 
 function updateComments() {
-    LAST_UPDATE = Date.now();
     $.ajax({
         url: "comments/",
         type: "POST",
@@ -228,6 +228,7 @@ function updateComments() {
             );
         }
     });
+    LAST_UPDATE = Date.now();
 }
 
 var csrftoken = getCookie('csrftoken');

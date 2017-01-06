@@ -158,6 +158,9 @@ function onLoadForm() {
     }
 }
 
+var LAST_UPDATE = Date.now() - 5000;
+
+
 function appendComment(json) {
     var order = encodeStr(json.order);
     var message = encodeStr(json.message);
@@ -191,7 +194,7 @@ function create_post() {
 
         success : function(json) {
             $('#message').val('');
-            appendComment(json);
+            updateComments()
         },
 
         error : function(xhr,errmsg,err) {
@@ -205,15 +208,16 @@ function create_post() {
 }
 
 function updateComments() {
+    LAST_UPDATE = Date.now();
     $.ajax({
         url: "comments/",
         type: "POST",
         cache: false,
         dataType: "json",
-        data : { last_update: Date.now() - 5000 },
+        data : {  },
 
         success : function(json) {
-            json.comments.slice(1).forEach(appendComment);
+            json.comments.forEach(appendComment);
         },
 
         error : function(xhr,errmsg,err) {

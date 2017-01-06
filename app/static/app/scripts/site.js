@@ -34,6 +34,7 @@ $(document).ready(function () {
         valueNames: ['filter-value'],
         plugins: [ ListFuzzySearch() ]
     });
+    onLoadForm();
 });
 
 
@@ -120,6 +121,18 @@ function onButtonDown(string) {
     document.cookie = "wallpaper=" + name + ';expires=' + now.toUTCString() + ';path=/';
 }
 
+function encodeStr(value) {
+    var lt = /</g,
+    gt = />/g,
+    ap = /'/g,
+    ic = /"/g;
+    return value
+        .toString()
+        .replace(lt, "&lt;")
+        .replace(gt, "&gt;")
+        .replace(ap, "&#39;")
+        .replace(ic, "&#34;");
+}
 
 function setWallpaper(name) {
     if (['wall1', 'wall3', 'wall4'].indexOf(name) == -1) {
@@ -133,3 +146,97 @@ function setResponse(next) {
     document.getElementById('response').value = next;
     document.getElementById('response_form').scrollIntoView(true);
 }
+
+function onLoadForm() {
+    var form = $('#response_form');
+    if (form.length) {
+        form.on('submit', function (event) {
+            event.preventDefault();
+            create_post();
+        });
+        setInterval(updateComments, 5000);
+    }
+}
+
+function appendComment(json) {
+    var order = encodeStr(json.order);
+    var message = encodeStr(json.message);
+    var username = encodeStr(json.username);
+    var created = json.created;
+    var next = encodeStr(json.next);
+    $('#comments').append(
+        '<div style="margin-left: calc(4 * (' + order.length + 'px - 5px))"'
+        + ' class="bottom-top-tile light-border row comment">'
+        + '<div class="col-md-12 comment-message">'
+        + '<pre class="comment-pre">' + message + '</pre>'
+        + '</div>'
+        + '<div class="col-md-12">'
+        + '<span class="nickname">' + username + '</span>'
+        + '<div class="response-and-timestamp">'
+        + '<span class="timestamp">' + created + '</span>'
+        + '<button onclick="setResponse(\'' + next + '\')" class="response">ответить</button>'
+        + '</div>'
+        + '</div>'
+        + '</div>'
+    );
+}
+
+function create_post() {
+    $.ajax({
+        url: "comments",
+        type: "POST",
+        cache: false,
+        dataType: "json",
+        data : { message: $('#message').val(), order: $('#response').val() },
+
+        success : function(json) {
+            $('#message').val('');
+            appendComment(json);
+        },
+
+        error : function(xhr,errmsg,err) {
+            $('#results').html(
+                "<div class='alert-box alert radius' data-alert>" +
+                "Ошибочка)" +
+                "<a href='#' class='close'>&times;</a></div>"
+            );
+        }
+    });
+}
+
+function updateComments() {
+    $.ajax({
+        url: "comments/",
+        type: "POST",
+        cache: false,
+        dataType: "json",
+        data : { last_update: Date.now() - 5000 },
+
+        success : function(json) {
+            json.comments.forEach(appendComment);
+        },
+
+        error : function(xhr,errmsg,err) {
+            $('#results').html(
+                "<div class='alert-box alert radius' data-alert>" +
+                "Ошибочка)" +
+                "<a href='#' class='close'>&times;</a></div>"
+            );
+        }
+    });
+}
+
+var csrftoken = getCookie('csrftoken');
+
+function csrfSafeMethod(method) {
+    // these HTTP methods do not require CSRF protection
+    return (/^(GET|HEAD|OPTIONS|TRACE)$/.test(method));
+}
+
+$.ajaxSetup({
+    beforeSend: function(xhr, settings) {
+        if (!csrfSafeMethod(settings.type) && !this.crossDomain) {
+            xhr.setRequestHeader("X-CSRFToken", csrftoken);
+        }
+    }
+});

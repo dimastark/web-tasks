@@ -9,7 +9,7 @@ from app.forms import BootstrapAuthenticationForm, RegistrationForm
 from app.views import (
     home, images, comments, contact,
     visits, visits_list, register,
-)
+    comments_update)
 
 admin.autodiscover()
 urlpatterns = [
@@ -17,6 +17,7 @@ urlpatterns = [
     url(r'^home$', home, name='home'),
     url(r'^images$', images, name='images'),
     url(r'^comments$', comments, name='comments'),
+    url(r'^comments/$', comments_update, name='comments_sync'),
     url(r'^contact$', contact, name='contact'),
     url(r'^$', home, name='home'),
 

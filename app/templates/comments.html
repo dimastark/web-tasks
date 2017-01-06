@@ -6,6 +6,7 @@
 {% endblock %}
 
 {% block content %}
+    <div id="comments">
     {% for next, comment in comments %}
         <div style="margin-left: calc(4 * ({{ comment.order|length }}px - 5px))"
              class="bottom-top-tile light-border row comment">
@@ -21,7 +22,9 @@
             </div>
         </div>
     {% endfor %}
-    <form id="response_form" class="bottom-top-tile border" method="post" action="/comments">
+    </div>
+    <form id="response_form"
+          class="bottom-top-tile border" method="post" action="/comments">
         {% csrf_token %}
         <div class="row padded">
             <div class="controls-div col-xs-12 col-md-10">
@@ -36,4 +39,5 @@
             </div>
         </div>
     </form>
+    <div id="results"></div>
 {% endblock %}

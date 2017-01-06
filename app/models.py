@@ -80,10 +80,19 @@ class Comment(Model):
         message = form.cleaned_data['message']
         username = request.user.get_username() or 'anonymous'
         order = get_next_order(request.POST['order'])
-        Comment.objects.create(
+        new_comment = Comment(
             username=username,
             message=message,
             order=order
+        )
+        new_comment.save()
+        created = new_comment.created
+        return dict(
+            created=created.strftime("%d %B %Y г. %H:%M").lstrip('0'),
+            username=username,
+            message=message,
+            order=order,
+            next=Comment.get_response_order(order)
         )
 
     @staticmethod
@@ -122,3 +131,12 @@ class Comment(Model):
             Comment.get_response_order(dct['order'])
             for dct in Comment.objects.all().order_by('order').values()
         ]
+
+    @staticmethod
+    def get_new_created(last_update):
+        result = []
+        for i in Comment.objects.filter(created__gt=last_update).values():
+            dct = dict(i)
+            dct.update({'next': get_next_order(i['order'])})
+            result.append(dct)
+        return result

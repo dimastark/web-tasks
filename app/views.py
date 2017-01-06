@@ -1,6 +1,7 @@
 """ Вьюхи """
 from django.contrib.auth.models import User
 from django.http import HttpResponse
+from django.http import JsonResponse
 from django.shortcuts import render
 from django.http import HttpRequest
 from datetime import datetime
@@ -49,10 +50,11 @@ def images(request: HttpRequest):
 def comments(request: HttpRequest):
     """ Отзывы """
     Visit.make(request, '/comments')
-    if request.method == 'POST':
+    if request.method == 'POST' and request.is_ajax():
         form = CommentForm(request.POST)
         if form.is_valid():
-            Comment.make(request, form)
+            response_data = Comment.make(request, form)
+            return JsonResponse(response_data)
     return render(request, 'comments.html', {
         'name': 'comments',
         'title': 'Отзывы',
@@ -61,6 +63,15 @@ def comments(request: HttpRequest):
         'comments': list(zip(Comment.next_tuples(), Comment.comment_tuples())),
         'year': datetime.now().year,
     })
+
+
+def comments_update(request: HttpRequest):
+    """ Отзывы """
+    Visit.make(request, '/comments/')
+    if request.method == 'POST' and request.is_ajax():
+        last_update = datetime.fromtimestamp(int(request.POST['last_update']) / 1e3)
+        last = Comment.get_new_created(last_update)
+        return JsonResponse({'comments': last})
 
 
 def contact(request: HttpRequest):
@@ -90,7 +101,7 @@ def register(request: HttpRequest):
     if request.method == 'POST':
         form = RegistrationForm(request.POST)
         if form.is_valid():
-            name = form.cleaned_data['username']
+            name = form.cleaned_data['nickname']
             password = form.cleaned_data['password1']
             User.objects.create_user(
                 username=name,

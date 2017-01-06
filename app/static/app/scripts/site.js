@@ -214,7 +214,7 @@ function updateComments() {
         type: "POST",
         cache: false,
         dataType: "json",
-        data : {  },
+        data : { last_update: LAST_UPDATE },
 
         success : function(json) {
             json.comments.forEach(appendComment);

@@ -1,0 +1,38 @@
+@media print {
+	a { color: black; text-decoration: none; }
+}
+
+p.beauty {
+	color: blue;
+}
+
+/*
+span {
+color:white; 
+background:lightgray;
+padding-left:50%;
+border: 1px dotted black;
+padding: 100px 200px 300px 400px;
+background: #f0f0f0;
+width: 50%
+}*/
+
+div.psprt {
+	margin: auto;
+	border: 2px solid green;
+	width: 50%;
+	background-color: lightgreen;
+	padding: 20px 0px;
+}
+
+div.psprt figcaption {
+	color: darkgreen;
+	text-align: center;
+}
+
+div.psprt img {
+	width: 80%;
+	height: 80%;
+	display:block;
+    margin:auto;
+}

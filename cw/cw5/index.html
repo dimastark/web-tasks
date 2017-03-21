@@ -1,0 +1,29 @@
+<!DOCTYPE html>
+<html>
+<head>
+	<meta charset="utf-8">
+	<title>DOM2</title>
+	<style type="text/css">
+		html, body {
+			width: 100%;
+			height: 100%;
+		}
+	</style>
+	<script type="text/javascript">
+		function drawRect(event) {
+			var x = 'left:' + event.pageX + 'px;';
+			var y = 'top:' + event.pageY + 'px;';
+			var w = Math.round(Math.random() * 300);
+			var h = Math.round(Math.random() * 300);
+			var style = "position:absolute;width:" + w + "px;height:" + h + "px;border:1px solid #000;"
+			document.body.innerHTML += '<div style="' + style + x + y + '"></div>';
+		}
+		function rmRect(event) {
+			event.preventDefault();
+			if (event.target.tagName === "DIV") { event.target.remove(); }
+		}
+	</script>
+</head>
+<body onclick="drawRect(event)" oncontextmenu="rmRect(event)" onkeypress="">
+</body>
+</html>

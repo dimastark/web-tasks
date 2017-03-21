@@ -1,6 +1,7 @@
 from bottle import route, run, error, request, response
 import sqlite3
 
+# Это домашка. Да. Все правильно. В вебе не только фронт
 
 PAGES = ['/', 'hello', '404']
 

@@ -1,0 +1,43 @@
+{% extends "layout.html" %}
+{% load static %}
+
+{% block references %}
+    <link rel="stylesheet" type="text/css" href="{% static 'app/css/comments.css' %}" />
+{% endblock %}
+
+{% block content %}
+    <div id="comments">
+    {% for next, comment in comments %}
+        <div style="margin-left: calc(4 * ({{ comment.order|length }}px - 5px))"
+             class="bottom-top-tile light-border row comment">
+            <div class="col-md-12 comment-message">
+                <pre class="comment-pre">{{ comment.message }}</pre>
+            </div>
+            <div class="col-md-12">
+                <span class="nickname">{{ comment.username }}</span>
+                <div class="response-and-timestamp">
+                    <span class="timestamp">{{ comment.created }}</span>
+                    <button onclick="setResponse('{{ next }}')" class="response">ответить</button>
+                </div>
+            </div>
+        </div>
+    {% endfor %}
+    </div>
+    <form id="response_form"
+          class="bottom-top-tile border" method="post" action="/comments">
+        {% csrf_token %}
+        <div class="row padded">
+            <div class="controls-div col-xs-12 col-md-10">
+                <div class="form-group">{{ form.message }}</div>
+            </div>
+            <div class="col-xs-12 col-md-2">
+                <input id="response" type="hidden" name="order" value="{{ last }}">
+                <button type="submit"
+                        id="submit"
+                        name="submit"
+                        class="btn btn-primary send-button">Отправить</button>
+            </div>
+        </div>
+    </form>
+    <div id="results"></div>
+{% endblock %}

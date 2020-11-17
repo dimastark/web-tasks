@@ -1,0 +1,27 @@
+<div class="form-area">
+    <form method="post" action="/contact">
+        {% csrf_token %}
+        <h1 class="head">Написать мне</h1>
+        <div class="col-md-12 col-sm-6 controls-div">
+            <div class="form-group">
+                {{ form.your_name }}
+            </div>
+            <div class="form-group controls-div">
+                {{ form.your_email }}
+            </div>
+        </div>
+        <div class="col-md-12 col-sm-6 controls-div">
+            <div class="form-group">
+                {{ form.message }}
+                <p id="characterLeft" class="help-block">
+                    <span class="help-block js">Всё, хватит</span></p>
+                <p><span class="help-block alt">Максимальная длина сообщения - 120</span></p>
+            </div>
+        </div>
+        <button type="submit"
+                id="submit"
+                name="submit"
+                {% if button_class == 'btn-success' %}disabled{% endif %}
+                class="btn {{ button_class }}">{{ button_text }}</button>
+    </form>
+</div>

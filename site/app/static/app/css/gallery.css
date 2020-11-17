@@ -1,0 +1,155 @@
+.images-content-block {
+    position: relative;
+    margin: 10px 0;
+    width: 100%;
+}
+
+.images-header-block { margin: 10px 30px 40px }
+
+.thumbnail {
+    height: 256px;
+    box-shadow: 0 0 15px rgba(0, 0, 0, .8);
+    border: 1px solid #282828;
+}
+
+.full-screen-view { display: none }
+
+.full-screen-view:target {
+    display: inline-block;
+    background-color: rgba(0,0,0,.8);
+    animation: fade .5s ease-in;
+    top: 0;
+    left: 0;
+    width: 100%;
+    height: 100%;
+    position: fixed;
+    z-index: 1003;
+}
+
+.big-picture-img-div {
+    margin: 0 auto;
+    height: 100%;
+}
+
+.big-image {
+    position: absolute;
+    max-height: 90vh;
+    max-width: 90vw;
+    margin: auto;
+    top: 0;
+    left: 0;
+    right: 0;
+    bottom: 0;
+}
+
+.cross-img {
+    z-index: 1002;
+    position: absolute;
+    width: 30px;
+    right: 10px;
+    top: 10px;
+    opacity: .9;
+}
+
+.cross-img:hover {
+    opacity: 1;
+}
+
+.help-cross > .cross-img {
+    z-index: 1002;
+    position: absolute;
+    width: 15px;
+    height: 15px;
+    right: 5px;
+    top: 5px;
+}
+
+#help {
+    display: none;
+}
+
+#help:target {
+    top: 0;
+    left: 0;
+    animation: fade .5s ease;
+    width: 100%;
+    height: 100%;
+    display: inline-block;
+    visibility: visible;
+    position: fixed;
+    background-color: rgba(0,0,0,.7);
+    z-index: 1001;
+}
+
+.images-help-text {
+    position: absolute;
+    border-radius: 10px;
+    max-width: 90vw;
+    height: 300px;
+    width: 500px;
+    overflow: scroll;
+    margin: auto;
+    padding: 20px;
+    top: 0;
+    left: 0;
+    right: 0;
+    bottom: 0;
+    background: #eee;
+}
+
+.load {
+    background: url("../images/loading.gif") no-repeat center center rgba(0,0,0,0.25)
+}
+
+.make-wallpaper {
+    width: 102%;
+}
+
+#hide-walls {
+    display: none;
+}
+
+.hide-label {
+    background: #fff;
+    box-shadow: 0 0 10px #1b1b1b;
+    margin: 0 20px 20px;
+    padding: 5px;
+    opacity: .7;
+}
+
+.hide-label:hover {
+    opacity: 1;
+}
+
+.hide-label:after {
+    content: "Открыть обои";
+    display: block;
+    min-width: 100px;
+    text-align: center;
+}
+
+#hide-walls:checked ~ .hide-label:after {
+    content: "Скрыть обои";
+    min-width: 100px;
+    display: block;
+    text-align: center;
+}
+
+.hideable-block {
+    display: none;
+}
+
+#hide-walls:checked ~ .hideable-block {
+    display: block;
+}
+
+@media (max-width: 640px) { .thumbnail { height: 40% } }
+
+@keyframes fade {
+    from {
+        opacity: 0;
+    }
+    to {
+        opacity: 1;
+    }
+}

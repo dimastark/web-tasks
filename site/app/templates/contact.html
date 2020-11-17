@@ -1,0 +1,62 @@
+{% extends "layout.html" %}
+{% load staticfiles %}
+
+{% block references %}
+    <link rel="stylesheet" type="text/css" href="{% static 'app/css/contact.css' %}" />
+{% endblock %}
+
+{% block content %}
+
+    <div class="row full-contact">
+        <div class="column col-md-7 border full-tile">
+            <div class="full-tile row">
+                <div class="col-md-6">
+                    <div class="border full-tile row mail-div">
+                        <strong>Google:</strong>
+                        <a class="mail" href="mailto:dstarkdev@gmail.com">dstarkdev</a>
+                    </div>
+                    <div class="border full-tile row mail-div">
+                        <strong>Яндекс:</strong>
+                        <a class="mail" href="mailto:Dima.Stark97@yandex.ru">dima.stark97</a><br/>
+                    </div>
+                </div>
+                <div class="col-md-6">
+                    <div class="border full-tile row mail-div">
+                        <strong>LiveInternet:</strong>
+                        <a class="mail" href="mailto:fun@li.ru">fun@li.ru</a><br/>
+                    </div>
+                    <div class="border full-tile row mail-div">
+                        <strong>Моя:</strong>
+                        <a class="mail" href="mailto:i@dimastark.com">i@dimastark.com</a>
+                    </div>
+                </div>
+            </div>
+            <div class="full-tile row">
+                <div class="col-md-6 col-xs-6">
+                    <p class="img-par">
+                        Вконтакте
+                        <a href="https://vk.com/dimastarkoff">
+                            <img class="img-responsive img-link"
+                                 src="{% static 'app/images/vk.png' %}"
+                                 alt="vk"
+                            />
+                        </a>
+                    </p>
+                </div>
+                <div class="col-md-6 col-xs-6">
+                    <p class="img-par">
+                        GitHub
+                        <a href="https://github.com/dimastark">
+                            <img class="img-responsive img-link"
+                                 src="{% static 'app/images/github.png' %}"
+                                 alt="github"
+                            />
+                        </a>
+                    </p>
+                </div>
+            </div>
+        </div>
+        <div class="column col-md-4 border full-tile">{% include "parts/contact_form.html" %}</div>
+    </div>
+
+{% endblock %}

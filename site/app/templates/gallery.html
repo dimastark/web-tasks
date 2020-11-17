@@ -1,0 +1,88 @@
+{% extends "layout.html" %}
+{% load staticfiles %}
+
+{% block references %}
+    <link rel="stylesheet" type="text/css" href="{% static 'app/css/gallery.css' %}" />
+{% endblock %}
+
+{% block content %}
+    <section class="col-lg-12 border full-tile">
+        <div class="row images-header-block">
+            <h1>Галерея</h1>
+            <p class="js">F1 for <a id="help-toggle" href="#help">help</a></p>
+            <noscript><p>Включите javascript для полной совместимости</p></noscript>
+        </div>
+        <div class="row images-content-block">
+            {% for image in images %}
+                <div class="col-lg-3 col-md-4 col-xs-6">
+                    <div class="thumbnail">
+                        <a href="#{{ image.id }}">
+                            <img class="load thumb-image"
+                                 src="{% static image.thumb %}" alt="">
+                        </a>
+                        <div class="full-screen-view" id="{{ image.id }}">
+                            <div class="big-picture-img-div">
+                                <img src="{% static image.src %}" alt="" class="load big-image">
+                            </div>
+                            <a class="cross" href="#">
+                                <img class="cross-img" alt=""
+                                     src="{% static 'app/gallery/cross.png' %}">
+                            </a>
+                        </div>
+                    </div>
+                </div>
+            {% endfor %}
+            <div id="help">
+                <div class="images-help-text">
+                    <ul>
+                        <li>Миниатюры и полноэкранный режим работают без javascript</li>
+                        <li>Для полноценной работы галереи нужен javascript</li>
+                        <li>Листать картинки можно на стрелочки</li>
+                        <li>Картинки загружаются по мере необходимости</li>
+                        <li>F1 - отобразить эту подсказку</li>
+                        <li>Раздел "Обои" - можно выбрать фон сайта</li>
+                    </ul>
+                    <a class="help-cross" href="#">
+                        <img class="cross-img" alt="close" title="close"
+                             src="{% static 'app/gallery/cross.png' %}">
+                    </a>
+                </div>
+            </div>
+        </div>
+    </section>
+    <section class="col-lg-12 border full-tile">
+        <div class="row images-header-block">
+            <h1>Обои</h1>
+            <p>Тут большие изображения. Берегите свой трафик.</p>
+        </div>
+        <input type="checkbox" id="hide-walls">
+        <label for="hide-walls" class="hide-label"></label>
+        <div class="row hideable-block">
+            <div class="col-lg-12 images-content-block">
+                {% for image in wallpapers %}
+                    <div class="col-lg-3 col-md-4 col-xs-6">
+                        <div class="thumbnail">
+                            <button id="#b{{ image.id }}"
+                                    onclick="onButtonDown(this.id)"
+                                    class="make-wallpaper js">
+                                Сделать обоями сайта</button>
+                            <a href="#{{ image.id }}">
+                                <img class="load thumb-image"
+                                     src="{% static image.thumb %}" alt="">
+                            </a>
+                            <div class="full-screen-view" id="{{ image.id }}">
+                                <div class="big-picture-img-div">
+                                    <img src="{% static image.src %}" alt="" class="load big-image">
+                                </div>
+                                <a class="cross" href="#">
+                                    <img class="cross-img" alt=""
+                                         src="{% static 'app/gallery/cross.png' %}">
+                                </a>
+                            </div>
+                        </div>
+                    </div>
+                {% endfor %}
+            </div>
+        </div>
+    </section>
+{% endblock %}
